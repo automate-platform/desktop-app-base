@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8" />
+  <title>CodeGen Tool</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script type="text/javascript" src="js/custom.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="container mt-3 text-center">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="home-tab-pane"
+          aria-selected="true"
+        >
+          Source
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="generate-DD"
+          data-bs-toggle="tab"
+          data-bs-target="#generate-DD-pane"
+          type="button"
+          role="tab"
+          aria-controls="generate-DD-pane"
+          aria-selected="true"
+        >
+          Generate BD
+        </button>
+      </li>
+      <!-- <li class="nav-item" role="presentation">
+        <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="profile-tab-pane"
+                aria-selected="false"
+              >
+                Setting
+              </button>
+      </li> -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="support-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#support-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="support-tab-pane"
+          aria-selected="false"
+        >
+          Support
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="tab-content">
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="row mt-3">
+          <div class="col-6 input-all-file">
+            <!-- <label for="folder" class="form-label">Source</label>-->
+            <input
+              class="form-control"
+              type="file"
+              id="folder"
+              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              multiple
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 mt-2">
+            <ul class="list-group" id="list-file"></ul>
+
+            <div class="d-grid gap-2 mt-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" onclick="importFile()" type="button">
+                Generate
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div class="row mt-3">
+          <div class="col-6">
+            <label for="template" class="form-label">Select Template</label>
+            <input
+              type="file"
+              class="form-control d-none"
+              value="{{{template}}}"
+              id="file-template-hidden"
+                accept=".oml"
+              aria-describedby="file-template-hidden"
+            />
+            <div class="input-group mb-3" onclick="handleTemplate()">
+              <span class="input-group-text">Choose File</span>
+              <input
+                type="text"
+                class="form-control"
+                value="{{{template}}}"
+                id="file-template"
+                aria-describedby="file-template"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-6">
+            <label for="output-path" class="form-label">Select Output path</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" click="handleOutput()">
+                Choose Folder
+              </span>
+              <input
+                type="text"
+                class="form-control"
+                value="{{{outputPath}}}"
+                id="output-path"
+                aria-describedby="output-path"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 mt-2">
+            <ul class="list-group" id="list-file"></ul>
+            <div class="d-grid gap-2 mt-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" type="button" onclick="onSaveConfig()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="support-tab-pane" role="tabpanel" aria-labelledby="support-tab" tabindex="0">
+        <div class="mb-3">
+          <label for="support-message" class="form-label">Message</label>
+          <textarea class="form-control" id="support-message" rows="5"></textarea>
+        </div>
+
+        <button class="btn btn-primary" id="btn-support" onclick="sendSupport()">Send support</button>
+      </div>
+      <div class="tab-pane fade" id="generate-DD-pane" role="tabpanel" aria-labelledby="generate-DD" tabindex="0">
+        <br />
+        <div id="js-db-alert"></div>
+        <div class="spinner-border d-none" id="js-spinner" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <br />
+        <button class="btn btn-primary me-md-2" onclick="genDDFile()" type="button">
+          Generate
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

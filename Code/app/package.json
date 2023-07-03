@@ -1,0 +1,33 @@
+{
+  "name": "mgt-eco-app",
+  "version": "1.0.0",
+  "description": "MGT Eco APp",
+  "author": {
+    "name": "quangnh22",
+    "email": "quangnh22@fsoft.com.vn"
+  },
+  "main": "main.js",
+  "private": true,
+  "dependencies": {
+    "antlr4": "^4.12.0",
+    "antlr4-vb6": "^0.0.1",
+    "antlr4ts": "^0.5.0-alpha.4",
+    "convert-excel-to-json": "^1.7.0",
+    "exceljs": "^4.3.0",
+    "express": "^4.18.2",
+    "JSONPath": "^0.11.2",
+    "jsonpath-plus": "^7.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "node-red": "^3.0.2",
+    "node-red-contrib-loop": "~1.0.1",
+    "node-red-contrib-mongodb4": "~2.0.0",
+    "node-red-contrib-warp": "~0.1.1",
+    "node-red-contrib-zip": "~1.1.0",
+    "unzip-stream": "^0.3.1",
+    "vb6-antlr4": "^1.0.50",
+    "zip-a-folder": "^2.0.0"
+  }
+  
+}

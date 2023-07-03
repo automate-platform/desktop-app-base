@@ -1,0 +1,69 @@
+{
+  "asar": false,
+  "directories": {
+    "output": "deploy/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.map",
+    "!package.json",
+    "!package-lock.json",
+    {
+      "from": "../dist",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
+  "extraFiles": [
+    "data"
+  ],
+  "win": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "portable"
+    ]
+  },
+  "portable": {
+    "splashImage": "dist/assets/icons/electron.bmp"
+  },
+  "mac": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  },
+  "build": {
+    "name": "foobar",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "dist": "electron-builder"
+    },
+    "devDependencies": {
+      "electron": "^3.0.7",
+      "electron-builder": "^20.38.2"
+    },
+    "dependencies": {},
+    "build": {
+      "appId": "foobar.id",
+      "mac": {
+        "category": "foo.bar.category"
+      },
+      "protocols": {
+        "name": "foobar-protocol",
+        "schemes": [
+          "foobar"
+        ]
+      }
+    }
+  }
+}
