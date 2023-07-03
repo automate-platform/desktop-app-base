@@ -1,1 +1,0 @@
-payload.converted_content.startRule[0].module[3].controlProperties[7].cp_Properties[0].cp_SingleProperty[0].implicitCallStmt_InStmt[0].iCS_S_VariableOrProcedureCall[0].ambiguousIdentifier[0].text
