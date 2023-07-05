@@ -210,7 +210,7 @@ function installExtension(_id) {
                 redirect: 'follow'
             };
 
-            fetch(`http://127.0.0.1:1204/red/flow`, requestOptions)
+            fetch(base_url + admin_root +"/flow", requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     result = JSON.parse(result)
