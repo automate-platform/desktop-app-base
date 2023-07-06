@@ -1,1 +1,4 @@
-MGT@2023MGT@2023
+Secret Key: MGT@2023MGT@2023
+Cipher Mode of Encryption: ECB
+Key Size in Bits: 128
+Output Text Format: Hex

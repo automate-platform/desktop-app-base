@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\mgt_eco_app]
+"Name"="mgt-eco-app"
+"Version"="1.0.0"
+"Description"= "MGT Eco App"
+"Expiry"="2023-07-31"
+
