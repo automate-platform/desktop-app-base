@@ -14,7 +14,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\05-junction.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\05-junction.js"
             },
             "inject": {
                 "name": "inject",
@@ -25,7 +25,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\20-inject.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\20-inject.js"
             },
             "debug": {
                 "name": "debug",
@@ -36,7 +36,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\21-debug.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\21-debug.js"
             },
             "complete": {
                 "name": "complete",
@@ -47,7 +47,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\24-complete.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\24-complete.js"
             },
             "catch": {
                 "name": "catch",
@@ -58,7 +58,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\25-catch.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\25-catch.js"
             },
             "status": {
                 "name": "status",
@@ -69,7 +69,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\25-status.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\25-status.js"
             },
             "link": {
                 "name": "link",
@@ -82,7 +82,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\60-link.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\60-link.js"
             },
             "comment": {
                 "name": "comment",
@@ -93,7 +93,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\90-comment.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\90-comment.js"
             },
             "unknown": {
                 "name": "unknown",
@@ -104,7 +104,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\98-unknown.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\common\\98-unknown.js"
             },
             "function": {
                 "name": "function",
@@ -115,7 +115,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\10-function.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\10-function.js"
             },
             "switch": {
                 "name": "switch",
@@ -126,7 +126,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\10-switch.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\10-switch.js"
             },
             "change": {
                 "name": "change",
@@ -137,7 +137,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\15-change.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\15-change.js"
             },
             "range": {
                 "name": "range",
@@ -148,7 +148,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\16-range.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\16-range.js"
             },
             "template": {
                 "name": "template",
@@ -159,7 +159,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\80-template.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\80-template.js"
             },
             "delay": {
                 "name": "delay",
@@ -170,7 +170,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\89-delay.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\89-delay.js"
             },
             "trigger": {
                 "name": "trigger",
@@ -181,7 +181,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\89-trigger.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\89-trigger.js"
             },
             "exec": {
                 "name": "exec",
@@ -192,7 +192,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\90-exec.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\90-exec.js"
             },
             "rbe": {
                 "name": "rbe",
@@ -203,7 +203,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\rbe.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\function\\rbe.js"
             },
             "tls": {
                 "name": "tls",
@@ -214,7 +214,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\05-tls.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\05-tls.js"
             },
             "httpproxy": {
                 "name": "httpproxy",
@@ -225,7 +225,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\06-httpproxy.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\06-httpproxy.js"
             },
             "mqtt": {
                 "name": "mqtt",
@@ -238,7 +238,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\10-mqtt.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\10-mqtt.js"
             },
             "httpin": {
                 "name": "httpin",
@@ -250,7 +250,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\21-httpin.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\21-httpin.js"
             },
             "httprequest": {
                 "name": "httprequest",
@@ -261,7 +261,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\21-httprequest.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\21-httprequest.js"
             },
             "websocket": {
                 "name": "websocket",
@@ -275,7 +275,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\22-websocket.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\22-websocket.js"
             },
             "tcpin": {
                 "name": "tcpin",
@@ -288,7 +288,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\31-tcpin.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\31-tcpin.js"
             },
             "udp": {
                 "name": "udp",
@@ -300,7 +300,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\32-udp.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\network\\32-udp.js"
             },
             "CSV": {
                 "name": "CSV",
@@ -311,7 +311,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-CSV.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-CSV.js"
             },
             "HTML": {
                 "name": "HTML",
@@ -322,7 +322,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-HTML.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-HTML.js"
             },
             "JSON": {
                 "name": "JSON",
@@ -333,7 +333,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-JSON.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-JSON.js"
             },
             "XML": {
                 "name": "XML",
@@ -344,7 +344,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-XML.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-XML.js"
             },
             "YAML": {
                 "name": "YAML",
@@ -355,7 +355,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-YAML.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\parsers\\70-YAML.js"
             },
             "split": {
                 "name": "split",
@@ -367,7 +367,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\17-split.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\17-split.js"
             },
             "sort": {
                 "name": "sort",
@@ -378,7 +378,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\18-sort.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\18-sort.js"
             },
             "batch": {
                 "name": "batch",
@@ -389,7 +389,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\19-batch.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\sequence\\19-batch.js"
             },
             "file": {
                 "name": "file",
@@ -401,7 +401,7 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\storage\\10-file.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\storage\\10-file.js"
             },
             "watch": {
                 "name": "watch",
@@ -412,34 +412,34 @@
                 "local": false,
                 "user": false,
                 "module": "node-red",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\@node-red\\nodes\\core\\storage\\23-watch.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\@node-red\\nodes\\core\\storage\\23-watch.js"
             }
         }
     },
-    "node-red-contrib-zip": {
-        "name": "node-red-contrib-zip",
-        "version": "1.1.0",
-        "local": true,
-        "user": true,
+    "node-red-contrib-loop": {
+        "name": "node-red-contrib-loop",
+        "version": "1.0.1",
+        "local": false,
+        "user": false,
         "nodes": {
-            "zip": {
-                "name": "zip",
+            "loop": {
+                "name": "loop",
                 "types": [
-                    "zip"
+                    "loop"
                 ],
                 "enabled": true,
-                "local": true,
+                "local": false,
                 "user": false,
-                "module": "node-red-contrib-zip",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\node-red-contrib-zip\\red\\zip.js"
+                "module": "node-red-contrib-loop",
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\node-red-contrib-loop\\loop.js"
             }
         }
     },
     "node-red-contrib-mongodb4": {
         "name": "node-red-contrib-mongodb4",
         "version": "2.0.0",
-        "local": true,
-        "user": true,
+        "local": false,
+        "user": false,
         "nodes": {
             "mongodb4": {
                 "name": "mongodb4",
@@ -448,29 +448,48 @@
                     "mongodb4"
                 ],
                 "enabled": true,
-                "local": true,
+                "local": false,
                 "user": false,
                 "module": "node-red-contrib-mongodb4",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\node-red-contrib-mongodb4\\src\\mongodb4.js"
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\node-red-contrib-mongodb4\\src\\mongodb4.js"
             }
         }
     },
-    "node-red-contrib-fs": {
-        "name": "node-red-contrib-fs",
-        "version": "1.4.1",
-        "local": true,
-        "user": true,
+    "node-red-contrib-warp": {
+        "name": "node-red-contrib-warp",
+        "version": "0.1.1",
+        "local": false,
+        "user": false,
         "nodes": {
-            "File Lister": {
-                "name": "File Lister",
+            "warp-gate": {
+                "name": "warp-gate",
                 "types": [
-                    "fs-file-lister"
+                    "warp"
                 ],
                 "enabled": true,
-                "local": true,
+                "local": false,
                 "user": false,
-                "module": "node-red-contrib-fs",
-                "file": "E:\\FPT_Software\\Task(quangnh22)\\PAP Extension Market\\Desktop_app_base\\Code\\app\\node_modules\\node-red-contrib-fs\\fs\\fs-file-lister.js"
+                "module": "node-red-contrib-warp",
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\node-red-contrib-warp\\node\\warp.js"
+            }
+        }
+    },
+    "node-red-contrib-zip": {
+        "name": "node-red-contrib-zip",
+        "version": "1.1.0",
+        "local": false,
+        "user": false,
+        "nodes": {
+            "zip": {
+                "name": "zip",
+                "types": [
+                    "zip"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-contrib-zip",
+                "file": "E:\\FPT_Software\\Task(quangnh22)\\Code\\app\\node_modules\\node-red-contrib-zip\\red\\zip.js"
             }
         }
     }
