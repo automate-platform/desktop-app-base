@@ -81,21 +81,15 @@ function dateInPast(date) {
 
 if (menu_app.length) {
     for (let i = 0; i < menu_app.length; i++) {
-        var gen_url = path.join(settings.functionGlobalContext.__dirname, menu_app[i].app_dir, 'index.html')
-        function openGenTool() {
-            win.loadURL(gen_url);
-        }
         list_app.push({
             label: menu_app[i].app_name,
-            enabled: this.enabled,
+            enabled: true,
             click() {
-                openGenTool()
-            },
-            accelerator: menu_app[i].app_hotkey
+                win.loadURL(path.join(settings.functionGlobalContext.__dirname, menu_app[i].app_dir, 'index.html'));
+            }
         });
     }
 }
-
 
 const template = [
     {
@@ -103,7 +97,7 @@ const template = [
         submenu: list_app
     }, {
         label: 'Market Extention',
-        enabled: this.enabled,
+        enabled: true,
         click() {
             win.loadURL(marketscreen);
         }

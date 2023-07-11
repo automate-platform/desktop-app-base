@@ -218,7 +218,6 @@ function installExtension(_id) {
                         setTimeout(() => {
                             getResource(currentApp._id, result.id, app_name_zip, app_name);
                         }, 200);
-                        showSpinner(true);
                     } else {
                         showSpinner(false);
                     }
