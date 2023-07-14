@@ -63,6 +63,7 @@ function openDetail(_id) {
         .then(response => response.json()).then(data => {
             fetch(base_url + '/installed').then(response => response.json()).then(installed => {
                 data.isInstall = installed.some(item => item._id === data._id);
+                data.readme = marked(data.readme);
                 document.querySelector('.editor-container').innerHTML = '';
                 const renderedData = Mustache.render(templateDetail, data);
                 const renderedTab = Mustache.render(tabHeader, data);
@@ -106,6 +107,7 @@ function openDetailTab(_id) {
     fetch(base_url + '/app/' + _id)
         .then(response => response.json()).then(data => {
             document.querySelector('.editor-container').innerHTML = '';
+            data.readme = marked(data.readme);
             const renderedData = Mustache.render(templateDetail, data);
             document.querySelector('.editor-container').innerHTML = renderedData;
 
