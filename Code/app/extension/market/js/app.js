@@ -11,9 +11,67 @@ let tabHeader = document.querySelector('.tabs-container').innerHTML;
 let base_url = 'http://' + settings.uiHost + ':' + settings.uiPort;
 let admin_root = settings.httpAdminRoot;
 
+const divs = document.querySelectorAll('.step-item');
+const captions = document.querySelectorAll('.caption');
+const step_body = document.querySelectorAll('.step-body');
+const table = document.querySelector('.stepbar-progress');
+const body_fill = document.querySelectorAll('.body-fill');
+var states = [];
+var states_icon = [];
+var states_txt = [];
+var step = [];
+
 let recommendApp = [];
 let installedApp = [];
 let currentApp = {};
+
+function loaderBar(div, idx, complete, body_fill_idx, install) {
+    document.querySelector('.background').style.display = 'block';
+    document.querySelector('.loader-status-bar').style.display = 'block';
+    setTimeout(() => {
+        document.querySelector('.background').style.display = 'none';
+        document.querySelector('.loader-status-bar').style.display = 'none';
+    }, 13000)
+    setTimeout(() => {
+        ++body_fill_idx;
+        if (install) {
+            step = ["Request Server", "Download App", "Install App"];
+        } else {
+            step = ["Request Server", "Uninstall App", "Delete Log"];
+        }
+        if (complete) {
+            states_icon = ["<i class='bx bx-rotate-right bx-spin' ></i>", "<i class='bx bx-loader-circle bx-spin' ></i>", "<i class='bx bx-check-double bx-flashing' ></i>"];
+            states = ["active", "pending", "pass"];
+            states_txt = ["Active", "Pending", "Passed"];
+        } else {
+            states_icon = ["<i class='bx bx-rotate-right bx-spin' ></i>", "<i class='bx bx-loader-circle bx-spin' ></i>", "<i class='bx bx-error-circle bx-tada' ></i>"];
+            states = ["active", "pending", "fail"];
+            states_txt = ["Active", "Pending", "Failed"];
+        }
+        captions[idx].style.left = `${div.offsetLeft - 60}px`;
+        captions[idx].style.top = `${div.offsetTop - 10}px`;
+        table.dataset.currentStep = idx + 1;
+        states.forEach((states, index) => {
+            setTimeout(() => {
+                captions[idx].innerHTML = `${step[idx]} ${states_txt[index]}`
+                step_body[idx].innerHTML = states_icon[index];
+                table.dataset.stepStatus = states;
+            }, index * 1500);
+        });
+        if (body_fill_idx < 2) {
+            body_fill[body_fill_idx].style.display = `block`;
+            for (let percent = 0; percent < 101; percent++) {
+                setTimeout(() => {
+                    body_fill[body_fill_idx].style.width = `${percent}%`;
+                }, percent * (100 / 3));
+            }
+            body_fill[body_fill_idx].style.backgroundColor = document.querySelectorAll('.step-item[data-step="1"]');
+            setTimeout(() => {
+                body_fill[body_fill_idx].style.display = ``;
+            }, 100 * (119 / 3));
+        }
+    }, idx * 4000)
+}
 
 window.onload = function () {
     sessionStorage.clear();
@@ -170,33 +228,6 @@ function closeTab(div) {
     }
 }
 
-// function showSpinner(isShow) {
-//     if (isShow) {
-//         document.querySelector('.spinner-custom.success').style.display = 'block';
-//         document.querySelector('.background').style.display = 'block';
-//         // setTimeout(() => {
-//         //     document.querySelector('.spinner-custom.success').style.display = 'none';
-//         //     document.querySelector('.background').style.display = 'none';
-//         // }, 5000)
-//     } else {
-//         document.querySelector('.spinner-custom.error').style.display = 'block';
-//         document.querySelector('.background').style.display = 'block';
-//         setTimeout(() => {
-//             document.querySelector('.spinner-custom.error').style.display = 'none';
-//             document.querySelector('.background').style.display = 'none';
-//         }, 5000)
-//     }
-// }
-
-function showSpinner(isShow) {
-    if (isShow) {
-        setTimeout(() => {
-            document.querySelector('.spinner-custom.success #wrapper.success .status.success .percentage').style.webkitAnimation = 'percentage-slow 3s forwards, percentage-fast 0.4s forwards;'
-        },1000);
-    }
-}
-
-showSpinner(true);
 
 function installExtension(_id) {
     var myHeaders = new Headers();
@@ -227,21 +258,23 @@ function installExtension(_id) {
                 .then(result => {
                     result = JSON.parse(result)
                     if (result.id) {
+                        loaderBar(divs[1], 1, true, 0, true)
                         setTimeout(() => {
                             getResource(currentApp._id, result.id, app_name_zip, app_name);
                         }, 200);
-                        showSpinner(true);
                     } else {
-                        showSpinner(false);
+                        loaderBar(divs[1], 1, false, 0, true)
                     }
                 })
                 .catch(function (error) {
                     console.error(error);
-                    showSpinner(false);
                 });
+
+            loaderBar(divs[0], 0, true, -1, true);
         })
         .catch(function (error) {
             console.error(error);
+            loaderBar(divs[0], 0, false, -1, true);
         });
 }
 
@@ -268,10 +301,10 @@ function getResource(appId, flowId, filename, appname) {
     fetch(`${base_url}/app/install`, requestOptions)
         .then((response) => response.text())
         .then((result) => {
-            showSpinner(true);
+            loaderBar(divs[2], 2, true, 1, true);
             console.log(result);
         })
-        .catch((error) => { showSpinner(false); console.log("error", error) });
+        .catch((error) => { loaderBar(divs[2], 2, false, 1, true); console.log("error", error) });
 }
 
 
@@ -294,17 +327,20 @@ function deleteExtension(_id) {
             fetch(base_url + admin_root + '/flow/' + foundObjectId, requestOptions)
                 .then(response => {
                     if (response.status === 204) {
-                        deleteResource(_id, app_dir)
+                        deleteResource(_id, app_dir);
+                        loaderBar(divs[1], 1, true, 0, false);
                     } else {
-                        showSpinner(false);
+                        loaderBar(divs[1], 1, false, 0,false);
                     }
                 })
                 .catch(function (error) {
                     console.error(error);
                     showSpinner(false);
                 });
+            loaderBar(divs[0], 0, true, -1, false);
         })
         .catch(function (error) {
+            loaderBar(divs[0], 0, false, -1, false);
             console.error(error);
         });
 }
@@ -327,10 +363,10 @@ function deleteResource(app_id, app_dir) {
     fetch(base_url + "/app/delete", requestOptions)
         .then((response) => response.text())
         .then((result) => {
-            showSpinner(true);
+            loaderBar(divs[2], 2, true, 1, false);
             console.log(result);
         })
-        .catch((error) => { showSpinner(false); console.log("error", error) });
+        .catch((error) => { loaderBar(divs[2], 2, true, 1, false); console.log("error", error) });
 }
 
 $(document).ready(function () {
