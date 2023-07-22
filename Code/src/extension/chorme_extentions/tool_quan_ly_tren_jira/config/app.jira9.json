@@ -1,0 +1,19 @@
+{
+  "CUSTOM_FIELDS": {
+    "PRODUCT": "customfield_10220",
+    "DESCRIPTION_TRANSLATED": "customfield_10213",
+    "COMPLETED_SIZE": "customfield_10244",
+    "ESTIMATED_SIZE": "customfield_10243",
+    "REMAINING_SIZE": "customfield_10245",
+    "TIME_SPENT": "timespent",
+    "TIME_ESTIMATE": "timeoriginalestimate",
+    "TIME_REMAINING": "timeestimate",
+    "ROLE": "customfield_10310",
+    "QC_ACTIVITY": "customfield_10281",
+    "DEFECT_ORIGIN": "customfield_10278"
+  },
+  "TRANSITION_ID": 5,
+  "RESOLUTION_ID": 10000,
+  "RESOLUTION": ["Won't Fix", "Won't Do", "Not Bug", "Rejected", "Duplicated", "Cancelled"],
+  "PRODUCTS": "43196,43195,43192,43183,43182,43181,43179"
+}

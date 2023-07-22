@@ -1,0 +1,483 @@
+/**
+ * Summary. (use period)
+ *
+ * Description. (use period)
+ *
+ * @link   URL
+ * @author LongNT11@fsoft.com.vn
+ */
+
+/* === TABLE === */
+table.ztable.aui > thead {
+  border-bottom: none;
+}
+table.ztable.aui > thead > tr > th,
+table.ztable.aui > tbody > tr > th,
+table.ztable.aui > thead > tr > td,
+table.ztable.aui > tbody > tr > td,
+table.ztable.aui > tfoot > tr > td {
+  border: 1px solid #ccc;
+}
+table.ztable.aui > tbody > tr:first-child > td,
+table.ztable.aui > tbody > tr:first-child > th,
+table.ztable.aui > tfoot > tr:first-child > td {
+  border: 1px solid #ccc;
+}
+table.ztable.aui > thead > tr > th {
+  background-color: #205081;
+  vertical-align: middle;
+  color: #fff;
+  border-color: #205081;
+  word-break: break-all;
+  text-align: center;
+  font-weight: normal;
+}
+table.ztable.aui > thead > tr > th.left {
+  text-align: left;
+}
+table.ztable.small > thead > tr > th {
+  font-size: 11px;
+  font-weight: normal;
+}
+table.ztable.small > tbody > tr > td,
+table.ztable.small > tbody > tr > td > * {
+  font-size: 12px;
+}
+table.ztable.small > tbody td .jira-issue-status-lozenge {
+  font-size: 10px;
+}
+table.ztable.border > thead > tr > th {
+  border-color: #fff;
+}
+table.ztable.border > thead > tr:first-child > th {
+  border-top-color: #205081;
+}
+table.ztable.border > thead > tr:last-child > th {
+  border-bottom-color: #205081;
+}
+table.ztable.border > thead > tr > th:first-child {
+  border-left-color: #205081;
+}
+table.ztable.border > thead > tr > th:last-child {
+  border-right-color: #205081;
+}
+table.ztable.border > thead > tr > th.bbc {
+  border-bottom-color: #205081;
+}
+table.ztable.small > tbody > tr > td.col-number {
+  text-align: center;
+}
+table.ztable.small > tbody > tr > td.rate {
+  background: aqua;
+}
+table.ztable.small > tbody > tr > td.green {
+  background: green;
+  color: white;
+}
+table.ztable.small > tbody > tr > td.red {
+  background: red;
+  color: white;
+}
+table.ztable.small > tbody > tr > td.disabled {
+  background: gray;
+  color: #333;
+}
+
+table.ztable.aui > tbody > tr.selected > td {
+  background: #f0f0f0;
+}
+
+table.ztable {
+  width: 100%;
+  /* font-size: 12px; */
+}
+table.ztable td.danger {
+  background-color: rgba(248, 57, 32, 0.9);
+  color: white;
+}
+table.ztable td.warning {
+  background-color: rgba(248, 241, 16, 0.6);
+}
+
+table.ztable.large {
+  min-width: 1600px;
+}
+
+table.ztable.aui > tbody > tr > td.center {
+  text-align: center;
+}
+
+table.ztable .aui-lozenge {
+  font-size: 10px;
+}
+
+/* === DIALOG === */
+.FGA-PDC-dialog.aui-dialog2-xxlarge {
+  width: 90% !important;
+  min-height: 431px;
+}
+
+.FGA-PDC-dialog.aui-dialog2-xlarge {
+  width: 80% !important;
+  min-height: 431px;
+}
+
+.zdialog-body hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.zdialog-body .aui-tabs.horizontal-tabs > .tabs-menu > .menu-item.active-tab,
+.zdialog-body .aui-tabs.horizontal-tabs[data-aui-responsive] > .tabs-menu > .menu-item.active-tab,
+.zdialog-body .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .active-tab:focus,
+.zdialog-body .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .active-tab:hover,
+.zdialog-body .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .active-tab:active {
+  border-bottom: none;
+}
+
+.ztask-status {
+  font-size: 10px;
+}
+
+/* === AUI SELECT 2 === */
+.zdialog-body .aui-select2-container {
+  min-width: 130px;
+  max-width: 260px;
+}
+.select2-container-disabled .select2-choices:hover,
+.select2-container-disabled .select2-choice:hover {
+  border-color: #ccc !important;
+}
+.select2-container-disabled .select2-choices,
+.select2-container-disabled .select2-choice {
+  background-color: #ddd !important;
+  text-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+.zui-select .select2-search-field input {
+  padding: 0px !important;
+}
+
+/* === lABEL === */
+aui-label {
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+/* === LOADING === */
+#zloading {
+  display: table-cell;
+  line-height: 100%;
+  vertical-align: middle;
+  background: yellow;
+  padding: 5px 10px;
+  position: fixed;
+  right: 18px;
+  top: 18px;
+  z-index: 9000;
+  font-size: 12px;
+}
+
+.ztable tr td.free {
+  background-color: #999;
+}
+
+.ztable tr td.busy {
+  background-color: green;
+}
+
+.ztable tr td.pk {
+  background-color: #fff200;
+}
+
+/*===== DATE PICKER =====*/
+
+.ui-datepicker {
+  width: 17em;
+  padding: 0.2em 0.2em 0;
+  display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+  position: relative;
+  padding: 0.2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  position: absolute;
+  top: 2px;
+  width: 1.8em;
+  height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+  cursor: pointer;
+}
+.ui-datepicker .ui-datepicker-prev {
+  left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+  right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -15px;
+  top: 50%;
+  margin-top: -8px;
+  width: auto;
+  background-image: none;
+}
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+  line-height: 1.8em;
+  text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+  font-size: 1em;
+  margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+  width: 45%;
+}
+.ui-datepicker table {
+  width: 100%;
+  font-size: 0.9em;
+  border-collapse: collapse;
+  margin: 0 0 0.4em;
+}
+.ui-datepicker th {
+  padding: 0.7em 0.3em;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+}
+.ui-datepicker td {
+  border: 0;
+  padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+  display: block;
+  padding: 0.2em;
+  text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+  background-image: none;
+  margin: 0.7em 0 0 0;
+  padding: 0 0.2em;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+  float: right;
+  margin: 0.5em 0.2em 0.4em;
+  cursor: pointer;
+  padding: 0.2em 0.6em 0.3em 0.6em;
+  width: auto;
+  overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+  float: left;
+}
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi {
+  width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+  float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+  width: 95%;
+  margin: 0 auto 0.4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+  width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+  width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+  width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+  border-left-width: 0;
+}
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+  clear: left;
+}
+.ui-datepicker-row-break {
+  clear: both;
+  width: 100%;
+  font-size: 0;
+}
+
+/* RTL support */
+.ui-datepicker-rtl {
+  direction: rtl;
+}
+.ui-datepicker-rtl .ui-datepicker-prev {
+  right: 2px;
+  left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next {
+  left: 2px;
+  right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+  clear: right;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+  float: left;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.ui-datepicker-rtl .ui-datepicker-group {
+  float: right;
+}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+
+/* Icons */
+.ui-datepicker .ui-icon {
+  display: block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  left: 0.5em;
+  top: 0.3em;
+}
+.ui-datepicker {
+  background-color: #fff;
+  border: 1px solid #66afe9;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+  display: none;
+  margin-top: 4px;
+  padding: 10px;
+  width: 240px;
+}
+.ui-datepicker a,
+.ui-datepicker a:hover {
+  text-decoration: none;
+}
+.ui-datepicker a:hover,
+.ui-datepicker td:hover a {
+  color: #2a6496;
+  -webkit-transition: color 0.1s ease-in-out;
+  -moz-transition: color 0.1s ease-in-out;
+  -o-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-header {
+  margin-bottom: 4px;
+  text-align: center;
+}
+.ui-datepicker .ui-datepicker-title {
+  font-weight: 700;
+}
+.ui-datepicker .ui-datepicker-prev {
+  float: left;
+  text-align: left;
+}
+.ui-datepicker .ui-datepicker-next {
+  float: right;
+  text-align: right;
+}
+.ui-datepicker .ui-datepicker-calendar {
+  table-layout: fixed;
+  width: 100%;
+}
+.ui-datepicker .ui-datepicker-calendar th,
+.ui-datepicker .ui-datepicker-calendar td {
+  text-align: center;
+  padding: 4px 0;
+}
+.ui-datepicker .ui-datepicker-calendar td {
+  border-radius: 4px;
+  -webkit-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  -moz-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  -o-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+.ui-datepicker .ui-datepicker-calendar td:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+.ui-datepicker .ui-datepicker-calendar td a {
+  text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-current-day {
+  background-color: #4289cc;
+}
+.ui-datepicker .ui-datepicker-today {
+  background-color: #eee;
+}
+.ui-datepicker .ui-datepicker-today a {
+  font-weight: bold;
+}
+.ui-datepicker .ui-datepicker-current-day a {
+  color: #fff;
+}
+.ui-datepicker .ui-datepicker-calendar .ui-datepicker-unselectable:hover {
+  background-color: #fff;
+  cursor: default;
+}
+
+.aui-dialog .dialog-button-panel button.button-panel-button.aui-button-primary {
+  background-color: #3572b0;
+  color: #fff;
+  border-color: #255586;
+}
+
+#mail-body .toggle-title {
+  background-position: 3px 3px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.zdialog-body .textarea {
+  max-width: 100% !important;
+}
+[id^="zdialog-"] .button-panel-button {
+  outline: none;
+}
+.ztable .issue-type-icon {
+  margin-top: 3px;
+}
+.ztable.info tr td.first {
+  border-color: #fff;
+  border-left-color: #205081 !important;
+  background: #205081;
+  color: #fff;
+}
+.ztable.info tr:first-child td.first {
+  border-top-color: #205081;
+}
+.ztable.info tr:last-child td.first {
+  border-bottom-color: #205081;
+}
+.ztable th a.white {
+  color: #fff;
+}
+.total-overdue {
+  margin-left: 60px;
+}
+.total-overdue span {
+  background: rgba(248, 57, 32, 0.9);
+  color: white;
+  padding: 0 5px;
+}
+span.norm {
+  background-color: yellow;
+  padding: 0px 5px;
+  color: black;
+}

@@ -1,0 +1,9 @@
+[
+    {
+        "extension_id": "5878257185068363cc802b5290e2bf0d",
+        "extension_name": "Project KPI Management",
+        "extension_type": 2,
+        "extension_dir": "extension\\chorme_extentions\\tool_quan_ly_tren_jira",
+        "extension_hotkey": "CmdOrCtrl+2"
+    }
+]

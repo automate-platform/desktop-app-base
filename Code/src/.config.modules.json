@@ -1,0 +1,14 @@
+{
+    "unzip-stream": {
+        "spec": "unzip-stream",
+        "module": "unzip-stream",
+        "builtin": false,
+        "known": false
+    },
+    "zip-a-folder": {
+        "spec": "zip-a-folder",
+        "module": "zip-a-folder",
+        "builtin": false,
+        "known": false
+    }
+}

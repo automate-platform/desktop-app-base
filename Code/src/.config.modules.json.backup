@@ -1,0 +1,8 @@
+{
+    "unzip-stream": {
+        "spec": "unzip-stream",
+        "module": "unzip-stream",
+        "builtin": false,
+        "known": false
+    }
+}
