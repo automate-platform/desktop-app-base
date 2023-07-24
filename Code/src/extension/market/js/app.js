@@ -471,7 +471,7 @@ function deleteExtention(_id) {
 
             fetch(base_url + '/extension/delete', requestOptions)
                 .then(response => {
-                    loaderBar(divs[1], 1, false, 0, false);
+                    loaderBar(divs[1], 1, true, 0, false);
                     if (response.status === 200) {
                         loaderBar(divs[2], 2, true, 1, false);
                     } else {

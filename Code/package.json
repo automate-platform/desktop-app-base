@@ -1,20 +1,38 @@
 {
-  "name": "mgt-eco-app",
-  "productName": "mgt-eco-app",
+  "name": "app-build",
+  "productName": "Mgt Eco App",
   "version": "1.0.0",
-  "description": "MGT Eco App",
+  "description": "Mgt Eco App",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "build-installer": "electron-builder"
   },
   "keywords": [],
   "author": {
     "name": "Vũ Đào Ngọc Hải",
-    "email": "haivdn@fpt.com"
+    "email": "haiqd065@gmail.com"
+  },
+  "build": {
+    "appId": "build-app",
+    "win": {
+      "target": [
+        "msi"
+      ],
+      "icon": "src/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "src/icon.ico",
+      "uninstallerIcon": "src/icon.ico",
+      "uninstallDisplayName": "CPU Monitor",
+      "license": "License.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "license": "MIT",
   "dependencies": {
@@ -47,6 +65,7 @@
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
-    "electron": "25.3.1"
+    "electron": "25.3.1",
+    "electron-builder": "^24.4.0"
   }
 }
