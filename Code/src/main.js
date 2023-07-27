@@ -1,24 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const electron_1 = require("electron");
-const electron_2 = require("electron");
+const contextMenu = require('electron-context-menu');
 const regedit = require('regedit').promisified
+const electron = require("electron");
 
+
+const settings = require('./pap_settings.js');
 const CryptoJS = require("crypto-js");
 const path = require("path");
 const fs = require("fs");
-const settings = require('./pap_settings.js');
+
 
 //nodered
-var os = require('os');
+var url = 'http://' + settings.uiHost + ':' + settings.uiPort + settings.httpAdminRoot;
 var child_process = require('child_process');
+var RED = require('node-red');
 var http = require('http');
 var expressApp = require('express')();
 var server = http.createServer(expressApp);
-var RED = require('node-red');
+var os = require('os');
 
 const key_decrypt = "MGT@2023MGT@2023";
-var url = 'http://' + settings.uiHost + ':' + settings.uiPort + settings.httpAdminRoot;
 var list_extensions = [];
 var list_apps = [];
 let startscreen = path.join(__dirname, 'index.html');
@@ -89,7 +91,7 @@ const template = [
     }
 ]
 
-const menu = electron_1.Menu.buildFromTemplate(template)
+const menu = electron.Menu.buildFromTemplate(template)
 let mainWindow = null;
 let winEditor = null;
 
@@ -125,7 +127,7 @@ function startNodered() {
     expressApp.use(settings.httpAdminRoot, RED.httpAdmin);
     expressApp.use(settings.httpNodeRoot, RED.httpNode);
     server.on('error', function (error) {
-        electron_1.dialog.showErrorBox('ErrorRED1', error.toString());
+        electron.dialog.showErrorBox('ErrorRED1', error.toString());
     });
     server.listen(settings.uiPort, settings.uiHost, function () {
         RED.start().then(function () {
@@ -133,15 +135,15 @@ function startNodered() {
             mainWindow = createMainWindow();
             mainWindow.maximize();
         }).catch(function (error) {
-            electron_1.dialog.showErrorBox('ErrorRED2', error.toString(), settings.userDir);
-            electron_1.app.exit(1);
+            electron.dialog.showErrorBox('ErrorRED2', error.toString(), settings.userDir);
+            electron.app.exit(1);
         });
     });
 }
 
 function createDialogWindow() {
-    const app = electron_2.app;
-    electron_2.dialog.showMessageBox({
+    const app = electron.app;
+    electron.dialog.showMessageBox({
         type: 'warning',
         buttons: ['Ok', 'Exit'],
         defaultId: 0,
@@ -160,11 +162,11 @@ function createDialogWindow() {
 
 function createWindow() {
     extensions.forEach(extensionPath => {
-        electron_1.session.defaultSession.loadExtension(extensionPath);
+        electron.session.defaultSession.loadExtension(extensionPath);
     });
 
     // Create the browser window.
-    const window = new electron_1.BrowserWindow({
+    const window = new electron.BrowserWindow({
         title: 'Web Page',
         center: true,
         autoHideMenuBar: true,
@@ -183,14 +185,18 @@ function createWindow() {
     return window;
 }
 
+contextMenu({
+    showSaveImageAs: true
+});
+
 function createMainWindow() {
-    electron_1.Menu.setApplicationMenu(menu)
+    electron.Menu.setApplicationMenu(menu)
     extensions.forEach(extensionPath => {
-        electron_1.session.defaultSession.loadExtension(extensionPath);
+        electron.session.defaultSession.loadExtension(extensionPath);
     });
 
     // Create the browser window.
-    const window = new electron_1.BrowserWindow({
+    const window = new electron.BrowserWindow({
         center: true,
         icon: __dirname + '/icon.ico',
         webPreferences: {
@@ -201,13 +207,13 @@ function createMainWindow() {
     });
     window.loadURL('file://' + startscreen);
     window.on('close', () => {
-        electron_1.app.exit();
+        electron.app.exit();
     });
-    electron_1.app.setAsDefaultProtocolClient('mgt-eco-app')
+    electron.app.setAsDefaultProtocolClient('mgt-eco-app')
     return window;
 }
 
-electron_1.app.on('ready', () => {
+electron.app.on('ready', () => {
     regedit.list(['HKCU\\mgt_eco_app']).then(data => {
         let exist = data["HKCU\\mgt_eco_app"].exists
         if (!exist) {
@@ -242,15 +248,15 @@ electron_1.app.on('ready', () => {
     })
 })
 // Quit when all windows are closed.
-electron_1.app.on('window-all-closed', () => {
+electron.app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
-        electron_1.app.exit();
+        electron.app.exit();
     }
 });
 
-electron_1.app.on('activate', () => {
+electron.app.on('activate', () => {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) {

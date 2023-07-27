@@ -35,6 +35,7 @@ window.onload = function () {
                 document.querySelector('.app-not-installed .monaco-list-rows').innerHTML = '';
                 data_not_installed.forEach(element => {
                     element.isInstall = false;
+                    element.lastVersion = element.versions[element.versions.length - 1]['version'];
                     const rendered = Mustache.render(templateListNotInstall, element);
                     document.querySelector('.app-not-installed .monaco-list-rows').innerHTML += rendered;
                 });
@@ -53,6 +54,7 @@ window.onload = function () {
                 document.querySelector('.extension .monaco-list-rows').innerHTML = '';
                 data_not_installed.forEach(element => {
                     element.isInstall = false;
+                    element.lastVersion = element.versions[element.versions.length - 1]['version'];
                     const rendered = Mustache.render(templateListExtension, element);
                     document.querySelector('.extension  .monaco-list-rows').innerHTML += rendered;
                 });
@@ -149,6 +151,7 @@ function openDetail(_id) {
                 } else {
                     data.isApp = false;
                 }
+                data.lastVersion = data.versions[data.versions.length - 1]['version'];
                 data.readme = marked(data.readme);
                 document.querySelector('.editor-container').innerHTML = '';
                 const renderedData = Mustache.render(templateDetail, data);
@@ -199,6 +202,7 @@ function openDetailTab(_id) {
                 } else {
                     data.isApp = false;
                 }
+                data.lastVersion = data.versions[data.versions.length - 1]['version'];
                 data.readme = marked(data.readme);
                 document.querySelector('.editor-container').innerHTML = '';
                 const renderedData = Mustache.render(templateDetail, data);
@@ -266,7 +270,7 @@ function closeTab(div) {
 }
 
 
-function installApp(_id) {
+function installApp(_id, version) {
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Node-RED-API-Version", "v2");
@@ -276,8 +280,8 @@ function installApp(_id) {
         .then(response => response.json()).then(dataRes => {
             currentApp = dataRes;
             console.log(currentApp);
-            const app_name_zip = currentApp.zip_url.split('.')[0]
-            const app_name = currentApp.description
+            const app_name_zip = currentApp.zip_url.split('.')[0];
+            const app_name = currentApp.description;
             const data = JSON.parse(currentApp.flow);
             const param = data[0];
             param.nodes = [];
@@ -297,7 +301,7 @@ function installApp(_id) {
                     if (result.id) {
                         loaderBar(divs[1], 1, true, 0, true)
                         setTimeout(() => {
-                            getResource(currentApp._id, result.id, app_name_zip, app_name);
+                            getResource(currentApp._id, result.id, app_name_zip, app_name, version);
                         }, 200);
                     } else {
                         loaderBar(divs[1], 1, false, 0, true)
@@ -317,7 +321,7 @@ function installApp(_id) {
 
 
 
-function getResource(appId, flowId, filename, appname) {
+function getResource(appId, flowId, filename, appname, version) {
     var header = new Headers();
     header.append("Accept", "application/json");
     header.append("Node-RED-API-Version", "v2");
@@ -326,7 +330,8 @@ function getResource(appId, flowId, filename, appname) {
         app_id: appId,
         flow_id: flowId,
         file_name: filename,
-        app_name: appname
+        app_name: appname,
+        app_version: version
     }
     var requestOptions = {
         method: "POST",
@@ -406,7 +411,7 @@ function deleteResource(app_id, app_dir) {
         .catch((error) => { loaderBar(divs[2], 2, false, 1, false); console.log("error", error) });
 }
 
-function installExtention(_id) {
+function installExtention(_id, version) {
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Node-RED-API-Version", "v2");
@@ -417,6 +422,7 @@ function installExtention(_id) {
             console.log(dataRes);
             const extension = {
                 extension_id: dataRes._id,
+                extension_version: version,
                 extension_name: dataRes.description,
                 extension_zip: dataRes.zip_url.split('.')[0]
             }

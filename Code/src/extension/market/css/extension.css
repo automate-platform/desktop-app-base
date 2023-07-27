@@ -742,7 +742,7 @@ body {
 .version-history-top-container .version-history-table-thead {
   display: table-header-group;
   border-color: inherit;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
@@ -766,10 +766,9 @@ body {
 
 .version-history-top-container .version-history-container-column {
   width: 33%;
-  display: inline;
   padding-top: 10px;
-  text-align: left;
-  padding: 50px;
+  text-align: center;
+  padding: 0 50px 0 50px;
 }
 
 .version-history-container-row th:first-child {

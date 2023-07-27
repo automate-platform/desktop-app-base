@@ -76,7 +76,6 @@
               <input type="text" class="outline-none shadow-none search-box" id="searchForm"
                 placeholder="Search Extensions in Marketplace" autocomplete="off" style="
               padding-left: 7px;" />
-              <!-- <input type="submit" value="Submit" > -->
             </form>
           </div>
         </div>
@@ -132,7 +131,8 @@
                                 <li class="action-item action-dropdown-item" role="presentation" title="">
                                   {{^isInstall}}
                                   <a class="action-label codicon extension-action label prominent install action-dropdown"
-                                    role="button" aria-label="" onclick="installApp('{{_id}}')">Install</a>
+                                    role="button" aria-label=""
+                                    onclick="installApp('{{_id}}', '{{lastVersion}}')">Install</a>
                                   {{/isInstall}}
                                   {{#isInstall}}
                                   <a class="action-label codicon extension-action label prominent install action-dropdown"
@@ -220,7 +220,8 @@
                                 <li class="action-item action-dropdown-item" role="presentation" title="">
                                   {{^isInstall}}
                                   <a class="action-label codicon extension-action label prominent install action-dropdown"
-                                    role="button" aria-label="" onclick="installExtention('{{_id}}')">Install</a>
+                                    role="button" aria-label=""
+                                    onclick="installExtention('{{_id}}', '{{lastVersion}}')">Install</a>
                                   {{/isInstall}}
                                   {{#isInstall}}
                                   <a class="action-label codicon extension-action label prominent install action-dropdown"
@@ -427,11 +428,12 @@
                             {{^isInstall}}
                             {{#isApp}}
                             <a class="action-label codicon extension-action label prominent install action-dropdown"
-                              role="button" aria-label="" onclick="installApp('{{_id}}')">Install</a>
+                              role="button" aria-label="" onclick="installApp('{{_id}}', '{{lastVersion}}')">Install</a>
                             {{/isApp}}
                             {{^isApp}}
                             <a class="action-label codicon extension-action label prominent install action-dropdown"
-                              role="button" aria-label="" onclick="installExtention('{{_id}}')">Install</a>
+                              role="button" aria-label=""
+                              onclick="installExtention('{{_id}}', '{{lastVersion}}')">Install</a>
                             {{/isApp}}
                             {{/isInstall}}
                             {{#isInstall}}
@@ -499,68 +501,35 @@
                                   <tr class="version-history-container-row">
                                     <th class="version-history-container-column">
                                       Version</th>
-                                    <th class="version-history-container-column" style=" margin-left: 28px;">
+                                    <th class="version-history-container-column">
                                       Last Updated</th>
                                     <th class="version-history-container-column">
                                     </th>
                                   </tr>
                                 </thead>
                                 <tbody class="version-history-table-body">
+                                  <!-- {{#versions}} -->
                                   <tr class="version-history-container-row">
                                     <td class="version-history-container-column">
-                                      1.3.4</td>
-                                    <td class="version-history-container-column" title="22:18:21 2/7/2021">02/07/2021
+                                      {{version}}</td>
+                                    <td class="version-history-container-column" title="{{last_update}}">{{last_update}}
                                     </td>
                                     <td class="version-history-container-column">
-                                      <a href="_apis/public/gallery/publishers/adpyke/vsextensions/codesnap/1.3.4/vspackage"
+                                      {{^isInstall}}
+                                      {{#isApp}}
+                                      <a href="#" onclick="installApp('{{_id}}', '{{version}}')"
                                         rel="noreferrer noopener" title="Download"
-                                        aria-label="version 1.3.4 Download">Download</a>
+                                        aria-label="version {{version}} Download">Download</a>
+                                      {{/isApp}}
+                                      {{^isApp}}
+                                      <a href="#" onclick="installExtention('{{_id}}', '{{version}}')"
+                                        rel="noreferrer noopener" title="Download"
+                                        aria-label="version {{version}} Download">Download</a>
+                                      {{/isApp}}
+                                      {{/isInstall}}
                                     </td>
                                   </tr>
-                                  <tr class="version-history-container-row">
-                                    <td class="version-history-container-column">
-                                      1.3.3</td>
-                                    <td class="version-history-container-column" title="22:15:25 2/7/2021">02/07/2021
-                                    </td>
-                                    <td class="version-history-container-column">
-                                      <a href="_apis/public/gallery/publishers/adpyke/vsextensions/codesnap/1.3.3/vspackage"
-                                        rel="noreferrer noopener" title="Download"
-                                        aria-label="version 1.3.3 Download">Download</a>
-                                    </td>
-                                  </tr>
-                                  <tr class="version-history-container-row">
-                                    <td class="version-history-container-column">
-                                      1.3.2</td>
-                                    <td class="version-history-container-column" title="03:06:12 17/4/2021">16/04/2021
-                                    </td>
-                                    <td class="version-history-container-column">
-                                      <a href="_apis/public/gallery/publishers/adpyke/vsextensions/codesnap/1.3.2/vspackage"
-                                        rel="noreferrer noopener" title="Download"
-                                        aria-label="version 1.3.2 Download">Download</a>
-                                    </td>
-                                  </tr>
-                                  <tr class="version-history-container-row">
-                                    <td class="version-history-container-column">
-                                      1.3.1</td>
-                                    <td class="version-history-container-column" title="23:24:18 16/4/2021">16/04/2021
-                                    </td>
-                                    <td class="version-history-container-column">
-                                      <a href="_apis/public/gallery/publishers/adpyke/vsextensions/codesnap/1.3.1/vspackage"
-                                        rel="noreferrer noopener" title="Download"
-                                        aria-label="version 1.3.1 Download">Download</a>
-                                    </td>
-                                  </tr>
-                                  <tr class="version-history-container-row">
-                                    <td class="version-history-container-column">
-                                      1.3.0</td>
-                                    <td class="version-history-container-column" title="00:26:50 16/4/2021">15/04/2021
-                                    </td>
-                                    <td class="version-history-container-column">
-                                      <a href="_apis/public/gallery/publishers/adpyke/vsextensions/codesnap/1.3.0/vspackage"
-                                        rel="noreferrer noopener" title="Download"
-                                        aria-label="version 1.3.0 Download">Download</a>
-                                    </td>
-                                  </tr>
+                                  <!-- {{/versions}} -->
                                 </tbody>
                               </table>
                             </div>

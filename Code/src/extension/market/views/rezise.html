@@ -11,292 +11,272 @@
     <link href="https://fonts.googleapis.com/css2?family=Tektur&display=swap" rel="stylesheet">
 </head>
 <style>
-    body {
+    * {
+        border: 0;
+        box-sizing: border-box;
         margin: 0;
-        user-select: none;
+        padding: 0;
     }
 
-    .splash-screen--container {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 2000;
-        background-color: #F0F0F0;
+    :root {
+        --hue: 223;
+        --bg: hsl(var(--hue), 10%, 90%);
+        --fg: hsl(var(--hue), 10%, 10%);
+        --primary: hsl(var(--hue), 90%, 55%);
+        --disabled: hsl(var(--hue), 10%, 75%);
+        font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
     }
 
-    .splash-screen-backdrop {
-        position: absolute;
+    body,
+    button {
+        font: 1em/1.5 Hind, sans-serif;
+    }
+
+    body {
+        background: #565656;
+        color: var(--fg);
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    button {
+        background: hsl(var(--hue), 90%, 55%);
+        border-radius: 0.2em;
+        color: #fff;
+        cursor: pointer;
         margin: auto;
-        width: 600px;
-        height: 350px;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        top: calc(50% + 30px);
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: #606060 0 1px 20px;
-    }
-
-    .splash-screen--animation {
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        align-content: stretch;
-        overflow: hidden;
-    }
-
-    .splash-screen--logo-container {
+        padding: 0.5em 1em;
         position: relative;
-        width: 100px;
-        height: 100px;
-    }
-
-    .splash-screen--logo {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -160px;
-        z-index: 10;
-        animation-name: logoAnimation, logoLoadingAnimation;
-        animation-iteration-count: 1, infinite;
-        animation-duration: 0.5s, 6s;
-        animation-delay: 0s, 1s;
-        animation-timing-function: linear, ease-out;
-        -webkit-animation-name: logoAnimation, logoLoadingAnimation;
-        -webkit-animation-iteration-count: 1, infinite;
-        -webkit-animation-duration: 0.5s, 6s;
-        -webkit-animation-delay: 0s, 1s;
-        -webkit-animation-timing-function: linear, ease-out;
-    }
-
-    .splash-screen--logo img {
-        filter: drop-shadow(0px -20px 40px #000000);
-    }
-
-    #splash-screen--rocket {
-        opacity: 0;
-        animation-delay: 0.25s;
-        animation-name: rocketAnimation;
-        animation-duration: 0.25s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 0.25s;
-        -webkit-animation-name: rocketAnimation;
-        -webkit-animation-duration: 0.25s;
-        -webkit-animation-iteration-count: 1;
-        -webkit-animation-fill-mode: forwards;
-    }
-
-    .splash-screen--circle-container {
-        position: absolute;
-        height: 100vh;
-        width: 200vh;
-        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-    }
-
-    .splash-screen--circle {
-        position: absolute;
-        visibility: hidden;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: -webkit-linear-gradient(-45deg, rgb(26, 53, 188) 0%, rgb(173, 77, 68) 100%);
-        background: linear-gradient(135deg, rgb(26, 53, 188) 0%, rgb(173, 77, 68) 100%);
-        width: 150%;
-        padding-bottom: 150%;
-        opacity: 0;
-        border-radius: 50%;
-        transform-origin: center;
-        animation-name: circleAnimation;
-        animation-duration: 0.5s;
-        animation-iteration-count: 1;
-        -webkit-animation-name: circleAnimation;
-        -webkit-animation-duration: 0.5s;
-        -webkit-animation-iteration-count: 1;
-    }
-
-    .arealight {
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        user-select: none;
-        background-image: conic-gradient(from 90deg at 70% 50%, white, #2753F5), conic-gradient(from 270deg at 30% 50%, #2753F5, white);
-        -webkit-mask-image: radial-gradient(100% 50% at center center, black, transparent);
-        background-position-x: 0%, 100%;
-        background-position-y: 0%, 0%;
-        background-size: 50% 100%, 50% 100%;
-        transform: rotate(180deg) translate3d(0, 0, 0);
-        transform-origin: center center;
-        background-repeat: no-repeat;
-    }
-
-    @keyframes circleAnimation {
-        1% {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        20% {
-            opacity: 1;
-        }
-
-        80% {
-            transform: scale(0.02) translate(-2500%, -2500%);
-            opacity: 1;
-        }
-
-        100% {
-            transform: scale(0.02) translate(-2500%, -2500%);
-            opacity: 0;
-        }
-    }
-
-    @keyframes rocketAnimation {
-        0% {
-            opacity: 0;
-            left: -7%;
-            top: 20%;
-        }
-
-        100% {
-            opacity: 1;
-            left: 0;
-            top: 0;
-        }
-    }
-
-    @keyframes logoAnimation {
-        0% {
-            opacity: 0;
-            top: 15%;
-        }
-
-        100% {
-            left: 0;
-            top: 0;
-        }
-    }
-
-    @keyframes logoText {
-        0% {
-            opacity: 0;
-            top: 52.5%;
-        }
-
-        60% {
-            opacity: 0;
-            top: 52.5%;
-        }
-
-        100% {
-            opacity: 1;
-            top: 50%;
-        }
-    }
-
-    @keyframes logoLoadingAnimation {
-        0% {
-            transform: rotateY(0deg);
-        }
-
-        15% {
-            transform: rotateY(360deg);
-        }
-
-        100% {
-            transform: rotateY(360deg);
-        }
-    }
-
-    @keyframes float {
-        0% {
-            box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-            transform: translatey(0px);
-        }
-
-        50% {
-            box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-            transform: translatey(-20px);
-        }
-
-        100% {
-            box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-            transform: translatey(0px);
-        }
-    }
-
-    .splash-screen--logo-text {
-        position: absolute;
+        transform: translateX(-50%);
         text-align: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-top: 50px;
-        animation-name: logoText;
-        animation-duration: 1s;
+        transition: background 0.15s linear;
     }
 
-    .title {
-        margin: 0 0 .5em;
-        font-family: 'Tektur', cursive;
-        text-transform: uppercase;
-        font-weight: 900;
-        font-size: 2.5em;
-        line-height: .8;
-        color: transparent;
-        background-size: 300%;
-        -webkit-background-clip: text;
-        background-image: linear-gradient(-70deg, #a2d4ff 0%, #ff6464 100%);
-        animation: bg-animation 10s infinite;
-        text-shadow: 1px 18px 13px #ffffff4c;
+    button:hover {
+        background: hsl(var(--hue), 90%, 45%);
     }
 
-    .title:hover {
-        background-position: right;
+    .sp {
+        --incTrans: 0.1;
+        /* in seconds */
+        position: relative;
+        overflow: visible;
+        height: 1.5em;
+        width: 150px;
+        transform: rotate(90deg);
     }
 
-    @keyframes bg-animation {
-        0% {
-            background-position: left
-        }
+    .sp__bar,
+    .sp__hub {
+        stroke: var(--disabled);
+    }
 
-        50% {
-            background-position: right
-        }
+    .sp__hub--done,
+    .sp__dot--done {
+        transition: r 0.2s cubic-bezier(0, 0, 0.33, 1.67);
+    }
 
-        100% {
-            background-position: left
+    .sp__hub--done {
+        r: 10px;
+    }
+
+    .sp__hub--done~.sp__bar-fill {
+        transition: all calc(1s * var(--incTrans)) linear;
+    }
+
+    .sp__bar-fill,
+    .sp__hub-fill {
+        stroke: var(--primary);
+    }
+
+    .sp__bar-fill {
+        stroke-dasharray: 40 40;
+        stroke-dashoffset: 40;
+    }
+
+    .sp__hub-fill {
+        stroke-dasharray: 0 62.8 0;
+        visibility: hidden;
+    }
+
+    .sp__hub-fill--done {
+        stroke-dasharray: 31.4 0 31.4;
+        transition: all 0.2s 0.2s ease-out;
+        visibility: visible;
+    }
+
+    .sp__dot {
+        fill: var(--primary);
+    }
+
+    .sp__dot--done {
+        r: 4px;
+        transition-delay: 0.4s;
+    }
+
+    .status {
+        position: relative;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: hsl(var(--hue), 10%, 10%);
+            --fg: hsl(var(--hue), 10%, 90%);
+            --primary: hsl(var(--hue), 90%, 65%);
+            --disabled: hsl(var(--hue), 10%, 30%);
         }
     }
 </style>
 
 <body>
-    <div class="splash-screen--container">
-        <div class="splash-screen--animation">
-            <div class="splash-screen--logo-container">
-                <div class="splash-screen--logo">
-                    <img src="../../../MGT.png" width="200" height="200" alt="" srcset="">
-                </div>
-            </div>
+    <main>
+        <div class="" style="display: flex;">
+            <svg class="sp" width="204px" height="24px" viewBox="0 0 204 24">
+                <!-- Part 1 -->
+                <circle data-dot="1" class="sp__dot" cx="12" cy="12" r="0" fill="#000" />
+                <!-- <line class="sp__bar" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000" stroke-width="4" /> -->
+                <circle data-hub="1" class="sp__hub" cx="12" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+                <!-- <line data-bar="1" class="sp__bar-fill" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000"
+                    stroke-width="4" /> -->
+                <circle data-hub-fill="1" class="sp__hub-fill" cx="12" cy="12" r="10" fill="none" stroke-width="4"
+                    transform="rotate(180,12,12)" />
+                <!-- Part 2 -->
+                <circle data-dot="2" class="sp__dot" cx="72" cy="12" r="0" fill="#000" />
+                <!-- <line class="sp__bar" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000" stroke-width="4" /> -->
+                <circle data-hub="2" class="sp__hub" cx="72" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+                <!-- <line data-bar="2" class="sp__bar-fill" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000"
+                    stroke-width="4" /> -->
+                <circle data-hub-fill="2" class="sp__hub-fill" cx="72" cy="12" r="10" fill="none" stroke-width="4"
+                    transform="rotate(180,72,12)" />
+                <!-- Part 3 -->
+                <circle data-dot="3" class="sp__dot" cx="132" cy="12" r="0" fill="#000" />
+                <circle data-hub="3" class="sp__hub" cx="132" cy="12" r="2" fill="none" stroke="#000"
+                    stroke-width="4" />
+                <!-- <line data-bar="3" class="sp__bar-fill" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000"
+                    stroke-width="4" /> -->
+                <circle data-hub-fill="3" class="sp__hub-fill" cx="132" cy="12" r="10" fill="none" stroke-width="4"
+                    transform="rotate(180,132,12)" />
+            </svg>
+            <!-- <p class="status"></p> -->
         </div>
-        <div class="arealight"></div>
-        <div class="splash-screen--circle">
-        </div>
-        <div class="splash-screen--logo-text">
-            <h1 class="title">Multi Generation Tools</h1>
-        </div>
-    </div>
+        <!-- <button id="reset" type="button">Reset</button> -->
+    </main>
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const spb = new SegmentedProgress(".sp", ".status");
+    });
+
+    class SegmentedProgress {
+        constructor(svgQS, statusQS) {
+            this.svgEl = document.querySelector(svgQS);
+            this.statusEl = document.querySelector(statusQS);
+            this.pct = 0;
+            this.part = 0;
+            this.parts = 3;
+            this.timeout = null;
+
+            this.init();
+
+            let resetBtn = document.getElementById("reset");
+            if (resetBtn)
+                resetBtn.addEventListener("click", this.reset.bind(this));
+        }
+        init() {
+            this.updateStatus("Waiting…");
+            this.timeout = setTimeout(this.nextPart.bind(this), 750);
+        }
+        reset() {
+            this.pct = 0;
+            this.part = 0;
+            // undo all colored strokes
+            for (let p = 1; p <= this.parts; ++p) {
+                this.fillBar(p, this.pct);
+                this.fillCircle(p, true);
+            }
+
+            clearTimeout(this.timeout);
+            this.init();
+        }
+        run() {
+            if (this.part < this.parts) {
+                // increment
+                if (this.pct < 100) {
+                    this.inc(10);
+                    let svgCS = window.getComputedStyle(this.svgEl),
+                        incTrans = (svgCS.getPropertyValue("--incTrans") * 1e3) || 0;
+                    this.timeout = setTimeout(this.run.bind(this), incTrans);
+
+                } else {
+                    this.nextPart();
+                }
+            }
+        }
+        inc(amt) {
+            this.pct += amt;
+
+            if (this.pct >= 100)
+                this.pct = 100;
+
+            this.fillBar(this.part, this.pct);
+        }
+        fillBar(part, pct) {
+            if (this.svgEl) {
+                let bar = this.svgEl.querySelector(`[data-bar='${part}']`);
+                if (bar) {
+                    let offset = 40 * (1 - this.pct / 100);
+                    bar.style.strokeDashoffset = offset;
+                }
+            }
+        }
+        fillCircle(part, unfill = false) {
+            let dot = this.svgEl.querySelector(`[data-dot='${part}']`),
+                hub = this.svgEl.querySelector(`[data-hub='${part}']`),
+                hubFill = this.svgEl.querySelector(`[data-hub-fill='${part}']`);
+
+            if (unfill === true) {
+                if (dot)
+                    dot.classList.remove("sp__dot--done");
+                if (hub)
+                    hub.classList.remove("sp__hub--done");
+                if (hubFill)
+                    hubFill.classList.remove("sp__hub-fill--done");
+            } else {
+                if (dot)
+                    dot.classList.add("sp__dot--done");
+                if (hub)
+                    hub.classList.add("sp__hub--done");
+                if (hubFill)
+                    hubFill.classList.add("sp__hub-fill--done");
+            }
+        }
+        nextPart() {
+            this.pct = 0;
+            // next part’s circle
+            ++this.part;
+            this.fillCircle(this.part);
+            // display the message
+            let msg = "";
+            if (this.part < this.parts)
+                msg = `\u0044ownloading ${this.part}/${this.parts - 1}…`;
+            else
+                msg = "Complete!";
+
+            this.updateStatus(msg);
+            // delay for next bar
+            let hubTotalTrans = 600;
+            this.timeout = setTimeout(this.run.bind(this), hubTotalTrans);
+        }
+        updateStatus(msg) {
+            if (this.statusEl)
+                this.statusEl.textContent = msg;
+        }
+    }
+</script>
 
 </html>
