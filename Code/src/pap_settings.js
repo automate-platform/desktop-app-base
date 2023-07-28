@@ -13,12 +13,10 @@ var settings = {
         //         }
         //     ]
         // },
-        // userDir: window.location.href.substring(0, window.location.href.lastIndexOf("/")),
         userDir: __dirname,
         editorTheme: { projects: { enabled: false } },
         flowFile: 'flows.json',
         functionGlobalContext: {
-            // __dirname: window.location.href.substring(0, window.location.href.lastIndexOf("/")),
             __dirname: __dirname,
             config: { "MARKET_SERVER": "http://ap.vtgo.vn:8008/" }
         },

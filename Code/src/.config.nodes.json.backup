@@ -492,24 +492,5 @@
                 "file": "E:\\FPT_Software\\Task_quangnh22\\PAP_Extension_Market\\Desktop_app_base\\Code\\app-build\\src\\node_modules\\node-red-contrib-warp\\node\\warp.js"
             }
         }
-    },
-    "node-red-contrib-loop": {
-        "name": "node-red-contrib-loop",
-        "version": "1.0.1",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "loop": {
-                "name": "loop",
-                "types": [
-                    "loop"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-loop",
-                "file": "E:\\FPT_Software\\Task_quangnh22\\PAP_Extension_Market\\Desktop_app_base\\Code\\app-build\\src\\node_modules\\node-red-contrib-loop\\loop.js"
-            }
-        }
     }
 }

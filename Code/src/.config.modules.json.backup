@@ -4,5 +4,29 @@
         "module": "unzip-stream",
         "builtin": false,
         "known": false
+    },
+    "zip-a-folder": {
+        "spec": "zip-a-folder",
+        "module": "zip-a-folder",
+        "builtin": false,
+        "known": false
+    },
+    "jsonpath-plus": {
+        "spec": "jsonpath-plus",
+        "module": "jsonpath-plus",
+        "builtin": false,
+        "known": false
+    },
+    "moment": {
+        "spec": "moment",
+        "module": "moment",
+        "builtin": false,
+        "known": false
+    },
+    "exceljs": {
+        "spec": "exceljs",
+        "module": "exceljs",
+        "builtin": false,
+        "known": false
     }
 }

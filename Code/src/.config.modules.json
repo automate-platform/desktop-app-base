@@ -10,5 +10,29 @@
         "module": "zip-a-folder",
         "builtin": false,
         "known": false
+    },
+    "jsonpath-plus": {
+        "spec": "jsonpath-plus",
+        "module": "jsonpath-plus",
+        "builtin": false,
+        "known": false
+    },
+    "moment": {
+        "spec": "moment",
+        "module": "moment",
+        "builtin": false,
+        "known": false
+    },
+    "exceljs": {
+        "spec": "exceljs",
+        "module": "exceljs",
+        "builtin": false,
+        "known": false
+    },
+    "convert-excel-to-json": {
+        "spec": "convert-excel-to-json",
+        "module": "convert-excel-to-json",
+        "builtin": false,
+        "known": false
     }
 }

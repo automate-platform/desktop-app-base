@@ -88,10 +88,7 @@ window.onload = function () {
 function loaderBar(div, idx, complete, body_fill_idx, install) {
     document.querySelector('.background').style.display = 'block';
     document.querySelector('.loader-status-bar').style.display = 'block';
-    setTimeout(() => {
-        document.querySelector('.background').style.display = 'none';
-        document.querySelector('.loader-status-bar').style.display = 'none';
-    }, 13000)
+
     setTimeout(() => {
         ++body_fill_idx;
         if (install) {
@@ -183,7 +180,7 @@ function openDetail(_id) {
                 // console.log(clickedIds);
             }).catch(function (error) {
                 console.error(error);
-            });
+            });;
         })
         .catch(function (error) {
             console.error(error);
@@ -299,12 +296,16 @@ function installApp(_id, version) {
                 .then(result => {
                     result = JSON.parse(result)
                     if (result.id) {
-                        loaderBar(divs[1], 1, true, 0, true)
+                        loaderBar(divs[1], 1, true, 0, true);
                         setTimeout(() => {
                             getResource(currentApp._id, result.id, app_name_zip, app_name, version);
                         }, 200);
                     } else {
-                        loaderBar(divs[1], 1, false, 0, true)
+                        loaderBar(divs[1], 1, false, 0, true);
+                        setTimeout(() => {
+                            document.querySelector('.background').style.display = 'none';
+                            document.querySelector('.loader-status-bar').style.display = 'none';
+                        }, 13000);
                     }
                 })
                 .catch(function (error) {
@@ -316,8 +317,79 @@ function installApp(_id, version) {
         .catch(function (error) {
             console.error(error);
             loaderBar(divs[0], 0, false, -1, true);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
         });
 }
+
+
+// function installApp(_id, version) {
+//     var myHeaders = new Headers();
+//     myHeaders.append("Accept", "application/json");
+//     myHeaders.append("Node-RED-API-Version", "v2");
+//     myHeaders.append("Content-Type", "application/json");
+
+//     fetch(base_url + '/market/' + _id)
+//         .then(response => response.json()).then(dataRes => {
+//             currentApp = dataRes;
+//             console.log(currentApp);
+//             const app_name_zip = currentApp.zip_url.split('.')[0];
+//             const app_name = currentApp.description;
+//             const data = JSON.parse(currentApp.flow);
+//             const param = {};
+//             param.tabs = {};
+//             param.nodes = {};
+//             data.filter(x => x.type === 'tab').forEach(tab => {
+//                 param.tabs[tab['id']] = tab
+//             });
+//             data.filter(x => x.type !== 'tab').forEach(node => {
+//                 param.nodes[node['id']] = node
+//             });
+//             // param.configs = data.filter(x => x.id !== param.id);
+//             param.all = data
+//             console.log(param);
+
+//         //     var requestOptions = {
+//         //         method: 'POST',
+//         //         headers: myHeaders,
+//         //         body: JSON.stringify(param),
+//         //         redirect: 'follow'
+//         //     };
+
+//         //     fetch(base_url + admin_root + "/flow", requestOptions)
+//         //         .then(response => response.text())
+//         //         .then(result => {
+//         //             result = JSON.parse(result)
+//         //             if (result.id) {
+//         //                 loaderBar(divs[1], 1, true, 0, true);
+//         //                 setTimeout(() => {
+//         //                     getResource(currentApp._id, result.id, app_name_zip, app_name, version);
+//         //                 }, 200);
+//         //             } else {
+//         //                 loaderBar(divs[1], 1, false, 0, true);
+//         //                 setTimeout(() => {
+//         //                     document.querySelector('.background').style.display = 'none';
+//         //                     document.querySelector('.loader-status-bar').style.display = 'none';
+//         //                 }, 13000);
+//         //             }
+//         //         })
+//         //         .catch(function (error) {
+//         //             console.error(error);
+//         //         });
+
+//         //     loaderBar(divs[0], 0, true, -1, true);
+//         })
+//         .catch(function (error) {
+//             console.error(error);
+//             loaderBar(divs[0], 0, false, -1, true);
+//             setTimeout(() => {
+//                 document.querySelector('.background').style.display = 'none';
+//                 document.querySelector('.loader-status-bar').style.display = 'none';
+//             }, 13000)
+//         });
+// }
 
 
 
@@ -344,9 +416,20 @@ function getResource(appId, flowId, filename, appname, version) {
         .then((response) => response.text())
         .then((result) => {
             loaderBar(divs[2], 2, true, 1, true);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000);
             console.log(result);
         })
-        .catch((error) => { loaderBar(divs[2], 2, false, 1, true); console.log("error", error) });
+        .catch((error) => {
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000);
+            loaderBar(divs[2], 2, false, 1, true);
+            console.log("error", error);
+        });
 }
 
 
@@ -378,11 +461,19 @@ function deleteApp(_id) {
                 .catch(function (error) {
                     console.error(error);
                     loaderBar(divs[1], 1, false, 0, false);
+                    setTimeout(() => {
+                        document.querySelector('.background').style.display = 'none';
+                        document.querySelector('.loader-status-bar').style.display = 'none';
+                    }, 13000)
                 });
             loaderBar(divs[0], 0, true, -1, false);
         })
         .catch(function (error) {
             loaderBar(divs[0], 0, false, -1, false);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
             console.error(error);
         });
 }
@@ -406,9 +497,20 @@ function deleteResource(app_id, app_dir) {
         .then((response) => response.text())
         .then((result) => {
             loaderBar(divs[2], 2, true, 1, false);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
             console.log(result);
         })
-        .catch((error) => { loaderBar(divs[2], 2, false, 1, false); console.log("error", error) });
+        .catch((error) => {
+            loaderBar(divs[2], 2, false, 1, false);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000);
+            console.log("error", error)
+        });
 }
 
 function installExtention(_id, version) {
@@ -438,14 +540,26 @@ function installExtention(_id, version) {
                     console.log(response);
                     loaderBar(divs[1], 1, true, 0, true);
                     if (response.status === 200) {
+                        setTimeout(() => {
+                            document.querySelector('.background').style.display = 'none';
+                            document.querySelector('.loader-status-bar').style.display = 'none';
+                        }, 13000)
                         loaderBar(divs[2], 2, true, 1, true);
                     } else {
                         loaderBar(divs[2], 2, false, 1, true);
+                        setTimeout(() => {
+                            document.querySelector('.background').style.display = 'none';
+                            document.querySelector('.loader-status-bar').style.display = 'none';
+                        }, 13000)
                     }
                 })
                 .catch(function (error) {
                     console.error(error);
                     loaderBar(divs[1], 1, false, 0, true);
+                    setTimeout(() => {
+                        document.querySelector('.background').style.display = 'none';
+                        document.querySelector('.loader-status-bar').style.display = 'none';
+                    }, 13000)
                 });
 
             loaderBar(divs[0], 0, true, -1, true);
@@ -453,6 +567,10 @@ function installExtention(_id, version) {
         .catch(function (error) {
             console.error(error);
             loaderBar(divs[0], 0, false, -1, true);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
         });
 }
 
@@ -480,18 +598,38 @@ function deleteExtention(_id) {
                     loaderBar(divs[1], 1, true, 0, false);
                     if (response.status === 200) {
                         loaderBar(divs[2], 2, true, 1, false);
+                        setTimeout(() => {
+                            document.querySelector('.background').style.display = 'none';
+                            document.querySelector('.loader-status-bar').style.display = 'none';
+                        }, 13000)
                     } else {
                         loaderBar(divs[2], 2, false, 1, false);
+                        setTimeout(() => {
+                            document.querySelector('.background').style.display = 'none';
+                            document.querySelector('.loader-status-bar').style.display = 'none';
+                        }, 13000)
                     }
                 })
                 .catch(function (error) {
                     console.error(error);
                     loaderBar(divs[1], 1, false, 0, false);
+                    setTimeout(() => {
+                        document.querySelector('.background').style.display = 'none';
+                        document.querySelector('.loader-status-bar').style.display = 'none';
+                    }, 13000)
                 });
             loaderBar(divs[0], 0, true, -1, false);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
         })
         .catch(function (error) {
             loaderBar(divs[0], 0, false, -1, false);
+            setTimeout(() => {
+                document.querySelector('.background').style.display = 'none';
+                document.querySelector('.loader-status-bar').style.display = 'none';
+            }, 13000)
             console.error(error);
         });
 }
