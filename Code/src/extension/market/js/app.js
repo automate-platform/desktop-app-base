@@ -1,4 +1,5 @@
 const path = require('path')
+
 let path_settings = path.join(__dirname, '../../pap_settings.js')
 let settings = require(path_settings)
 let templateListNotInstall = document.querySelector('.app-not-installed .monaco-list-rows').innerHTML;
@@ -280,10 +281,11 @@ function installApp(_id, version) {
             const app_name_zip = currentApp.zip_url.split('.')[0];
             const app_name = currentApp.description;
             const data = JSON.parse(currentApp.flow);
-            const param = data[0];
-            param.nodes = [];
-            param.configs = data.filter(x => x.id != param.id);
-
+            const param = data.filter(x => x.type === "tab")[0];
+            param.nodes = data.filter(x => x.id != param.id);
+            param.configs = [];
+            // param.subflows = data.filter(x => x.type === "subflow");
+            console.log(param);
             var requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
@@ -423,11 +425,11 @@ function getResource(appId, flowId, filename, appname, version) {
             console.log(result);
         })
         .catch((error) => {
+            loaderBar(divs[2], 2, false, 1, true);
             setTimeout(() => {
                 document.querySelector('.background').style.display = 'none';
                 document.querySelector('.loader-status-bar').style.display = 'none';
             }, 13000);
-            loaderBar(divs[2], 2, false, 1, true);
             console.log("error", error);
         });
 }
@@ -452,8 +454,8 @@ function deleteApp(_id) {
             fetch(base_url + admin_root + '/flow/' + foundObjectId, requestOptions)
                 .then(response => {
                     if (response.status === 204) {
-                        deleteResource(_id, app_dir);
                         loaderBar(divs[1], 1, true, 0, false);
+                        deleteResource(_id, app_dir);
                     } else {
                         loaderBar(divs[1], 1, false, 0, false);
                     }
@@ -543,7 +545,7 @@ function installExtention(_id, version) {
                         setTimeout(() => {
                             document.querySelector('.background').style.display = 'none';
                             document.querySelector('.loader-status-bar').style.display = 'none';
-                        }, 13000)
+                                    }, 13000)
                         loaderBar(divs[2], 2, true, 1, true);
                     } else {
                         loaderBar(divs[2], 2, false, 1, true);
@@ -601,7 +603,7 @@ function deleteExtention(_id) {
                         setTimeout(() => {
                             document.querySelector('.background').style.display = 'none';
                             document.querySelector('.loader-status-bar').style.display = 'none';
-                        }, 13000)
+                                    }, 13000)
                     } else {
                         loaderBar(divs[2], 2, false, 1, false);
                         setTimeout(() => {

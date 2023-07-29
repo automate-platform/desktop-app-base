@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const contextMenu = require('electron-context-menu');
+const electronReload = require('electron-reload');
 const regedit = require('regedit').promisified
 const electron = require("electron");
 
@@ -122,18 +123,34 @@ function dateInPast(date) {
     return false;
 };
 
+function startElectronReload() {
+    const directoriesToWatch = [path.join(__dirname, './menu.json'), path.join(__dirname, './extensions.json')];
+
+    for (const directory of directoriesToWatch) {
+        fs.watch(directory, { recursive: true }, (eventType, filename) => {
+            console.log(`${filename} ${eventType}`);
+            setTimeout(() => {
+                electron.app.relaunch();
+                electron.app.exit();
+            }, 13000)
+
+        });
+    }
+}
+
 function startNodered() {
     RED.init(server, settings);
     expressApp.use(settings.httpAdminRoot, RED.httpAdmin);
     expressApp.use(settings.httpNodeRoot, RED.httpNode);
     server.on('error', function (error) {
-        electron.dialog.showErrorBox('ErrorRED1', error.toString());
+        // electron.dialog.showErrorBox('ErrorRED1', error.toString());
     });
     server.listen(settings.uiPort, settings.uiHost, function () {
         RED.start().then(function () {
             winEditor = createWindow();
             mainWindow = createMainWindow();
             mainWindow.maximize();
+            startElectronReload()
         }).catch(function (error) {
             electron.dialog.showErrorBox('ErrorRED2', error.toString(), settings.userDir);
             electron.app.exit(1);
