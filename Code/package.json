@@ -3,7 +3,7 @@
   "productName": "[MGT]Eco App",
   "version": "1.0.0",
   "description": "Market App",
-  "main": "src/main.js",
+  "main": "app/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-packager",
@@ -11,7 +11,7 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
     "build-installer": "electron-builder",
-    "packager": "electron-packager . \"[MGT]Eco App\" --overwrite --icon=src/icon.ico --prune=true --out=release-builds"
+    "packager": "electron-packager . \"[MGT]Eco App\" --overwrite --icon=app/icon.ico --prune=true --out=release-builds --ignore=forge.config.js --ignore=package-lock.json --ignore=yarn.lock"
   },
   "keywords": [],
   "author": {
@@ -24,13 +24,12 @@
       "target": [
         "msi"
       ],
-      "icon": "src/icon.ico"
+      "icon": "app/icon.ico"
     },
     "nsis": {
-      "installerIcon": "src/icon.ico",
-      "uninstallerIcon": "src/icon.ico",
-      "uninstallDisplayName": "CPU Monitor",
-      "license": "License.txt",
+      "installerIcon": "app/icon.ico",
+      "uninstallerIcon": "app/icon.ico",
+      "uninstallDisplayName": "[MGT]Eco App",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }

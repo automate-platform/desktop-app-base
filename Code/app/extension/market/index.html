@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8" />
+  <title>App Market</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="./css/extension.css" rel="stylesheet" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"
+    integrity="sha512-HYiNpwSxYuji84SQbCU5m9kHEsRqwWypXgJMBtbRSumlx1iBB6QaxgEBZHSHEGM+fKyCX/3Kb5V5jeVXm0OglQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+  .loader-first-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(33, 33, 33);
+    z-index: 1000;
+  }
+
+  .loader-first {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .loader-first span {
+    position: absolute;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    font-size: 38px;
+    letter-spacing: 5px;
+    white-space: nowrap;
+  }
+
+  .loader-first span:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+  }
+
+  .loader-first span:nth-child(2) {
+    color: rgb(128, 198, 255);
+    -webkit-text-stroke: 1px rgb(128, 198, 255);
+    animation: uiverse723 3s ease-in-out infinite;
+  }
+
+  @keyframes uiverse723 {
+
+    0%,
+    100% {
+      clip-path: polygon(0% 45%, 15% 44%, 32% 50%,
+          54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+    }
+
+    50% {
+      clip-path: polygon(0% 60%, 16% 65%, 34% 66%,
+          51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+    }
+  }
+
+  .loader-three-back {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    background-color: #212121;
+    margin-left: -15px;
+    display: none;
+  }
+
+  .three-body {
+    --uib-size: 35px;
+    --uib-speed: 0.8s;
+    --uib-color: #9c83ff;
+    position: fixed;
+    top: 40%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+  }
+
+  .three-body__dot {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+  }
+
+  .three-body__dot:after {
+    content: '';
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: var(--uib-color);
+    border-radius: 50%;
+  }
+
+  .three-body__dot:nth-child(1) {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(60deg);
+    transform-origin: 50% 85%;
+  }
+
+  .three-body__dot:nth-child(1)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite ease-in-out;
+    animation-delay: calc(var(--uib-speed) * -0.3);
+  }
+
+  .three-body__dot:nth-child(2) {
+    bottom: 5%;
+    right: 0;
+    transform: rotate(-60deg);
+    transform-origin: 50% 85%;
+  }
+
+  .three-body__dot:nth-child(2)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+  }
+
+  .three-body__dot:nth-child(3) {
+    bottom: -5%;
+    left: 0;
+    transform: translateX(116.666%);
+  }
+
+  .three-body__dot:nth-child(3)::after {
+    top: 0;
+    left: 0;
+    animation: wobble2 var(--uib-speed) infinite ease-in-out;
+  }
+
+  @keyframes spin78236 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes wobble1 {
+
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: translateY(-66%) scale(0.65);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes wobble2 {
+
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: translateY(66%) scale(0.65);
+      opacity: 0.8;
+    }
+  }
+</style>
+
+<body>
+  <div class="loader-first-background"></div>
+  <div class="loader-first">
+    <span>Market Eco App</span>
+    <span>Market Eco App</span>
+  </div>
+  <div class="background"></div>
+  <div class="loader-status-bar">
+    <main>
+      <svg class="sp" width="204px" height="24px" viewBox="0 0 204 24" xmlns="http://www.w3.org/2000/svg">
+        <!-- Part 1 -->
+        <circle data-dot="1" class="sp__dot" cx="12" cy="12" r="0" fill="#000" />
+        <!-- <line class="sp__bar" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000" stroke-width="4" /> -->
+        <circle data-hub="1" class="sp__hub" cx="12" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+        <!-- <line data-bar="1" class="sp__bar-fill" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000"
+              stroke-width="4" /> -->
+        <circle data-hub-fill="1" class="sp__hub-fill" cx="12" cy="12" r="10" fill="none" stroke-width="4"
+          transform="rotate(180,12,12)" />
+        <!-- Part 2 -->
+        <circle data-dot="2" class="sp__dot" cx="72" cy="12" r="0" fill="#000" />
+        <!-- <line class="sp__bar" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000" stroke-width="4" /> -->
+        <circle data-hub="2" class="sp__hub" cx="72" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+        <!-- <line data-bar="2" class="sp__bar-fill" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000"
+              stroke-width="4" /> -->
+        <circle data-hub-fill="2" class="sp__hub-fill" cx="72" cy="12" r="10" fill="none" stroke-width="4"
+          transform="rotate(180,72,12)" />
+        <!-- Part 3 -->
+        <circle data-dot="3" class="sp__dot" cx="132" cy="12" r="0" fill="#000" />
+        <!-- <line class="sp__bar" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000" stroke-width="4" /> -->
+        <circle data-hub="3" class="sp__hub" cx="132" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+        <!-- <line data-bar="3" class="sp__bar-fill" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000"
+              stroke-width="4" /> -->
+        <circle data-hub-fill="3" class="sp__hub-fill" cx="132" cy="12" r="10" fill="none" stroke-width="4"
+          transform="rotate(180,132,12)" />
+        <!-- Part 4 -->
+        <circle data-dot="4" class="sp__dot done" cx="192" cy="12" r="0" fill="#000" />
+        <circle data-hub="4" class="sp__hub" cx="192" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+        <circle data-hub-fill="4" class="sp__hub-fill done" cx="192" cy="12" r="10" fill="none" stroke-width="4"
+          transform="rotate(180,192,12)" />
+      </svg>
+      <div class="status"></div>
+    </main>
+  </div>
+  <div class="container-fluid" id="wrapper">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse pt-1">
+        <div class="position-sticky pt-3 sidebar-sticky">
+          <div class="composite title" style="margin-top: -9px;">
+            <div class="title-label">
+              <h2 draggable="true" style="color: rgb(204, 204, 204);" title="App Market">App Market</h2>
+            </div>
+          </div>
+          <div class="search mx-2 mb-3">
+            <form id="myForm">
+              <input type="text" class="outline-none shadow-none search-box" id="searchForm"
+                placeholder="Search Apps in Market" autocomplete="off" style="
+              padding-left: 7px;" />
+            </form>
+          </div>
+        </div>
+        <div style="position: relative;display: flex;flex-direction: column;height: 90%;">
+          <div class="split-view-app app-not-installed" id="resizableDiv" style="position: relative;">
+            <div class="pane vertical expanded ">
+              <div class="pane-header extension-view-header expanded" tabindex="0" role="button"
+                style="display: flex; align-items: center; line-height: 10px;">
+                <div class="codicon codicon-view-pane-container-expanded"><i class='bx bx-chevron-right bx-rotate-90'
+                    style="font-size: large;"></i></div>
+                <h3 class="title" title="Application">Application</h3>
+              </div>
+            </div>
+            <div class="pane-body">
+              <div class="extensions-list">
+                <div class="monaco-list">
+                  <div class="monaco-list-rows">
+                    <div class="monaco-list-row" title="{{description}}" onclick="openDetail('{{_id}}')">
+                      <div class="extension-list-item">
+                        <div class="icon-container">
+                          <img class="icon" src="{{{icon_flow}}}" style="visibility: inherit;">
+                        </div>
+                        <div class="details">
+                          <div class="header-container">
+                            <div class="header">
+                              <span class="name">{{description}}</span><span
+                                class="install-count extension-install-count"><span
+                                  class="codicon codicon-extensions-install-count"><i class='bx bx-cloud-download'
+                                    style='color:#f7f2f2'></i></span><span class="count">87.8M</span></span><span
+                                class="ratings extension-ratings small">
+                                {{#rating}}<span class="codicon codicon-extensions-star-full"><i
+                                    class='bx bxs-star'></i></span><span
+                                  class="count">{{score}}</span></span>{{/rating}}<span
+                                class="sync-ignored"></span><span class="activation-status"></span>
+                              <div class="extension-remote-badge-container">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description ellipsis">
+                            {{summary}}
+                          </div>
+                          <div class="footer">
+                            <div class="author ellipsis">
+                              <div class="verified-publisher">
+                                <span class="extension-verified-publisher clickable"><span
+                                    class="codicon codicon-extensions-verified-publisher"></span></span>
+                              </div>
+                              <div class="publisher-name ellipsis" style="text-transform: uppercase;">
+                                {{type}}
+                              </div>
+                            </div>
+                            <div class="monaco-action-bar">
+                              <ul class="actions-container" role="toolbar">
+                                <li class="action-item action-dropdown-item" role="presentation" title="">
+                                  {{^isInstall}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label=""
+                                    onclick="installApp('{{_id}}', '{{lastVersion}}')">Install</a>
+                                  {{/isInstall}}
+                                  {{#isInstall}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label="" onclick="deleteApp('{{_id}}')">Uninstall</a>
+                                  {{/isInstall}}
+                                  <div class="action-dropdown-item-separator prominent">
+                                    <div>
+                                    </div>
+                                  </div>
+                                  <div class="monaco-dropdown">
+                                    <div class="dropdown-label">
+                                      <a
+                                        class="action-label dropdown codicon codicon-drop-down-button extension-action label prominent install action-dropdown">
+                                        {{^isInstall}}<i class='bx bx-down-arrow-alt'
+                                          style='color:#f7f2f2; font-size: 10px;'></i>
+                                        {{/isInstall}}
+                                        {{#isInstall}}<i class='bx bx-unlink'
+                                          style='color:#f7f2f2; font-size: 10px;'></i>
+                                        {{/isInstall}}
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="split-view-app extension" id="resizableDiv"
+            style="position: relative;background-color: rgb(24, 24, 24) !important;">
+            <div id="resize" class="resize"></div>
+            <div class="pane vertical expanded ">
+              <div class="pane-header extension-view-header expanded" tabindex="0" role="button"
+                style="display: flex; align-items: center; line-height: 10px;">
+                <div class="codicon codicon-view-pane-container-expanded"><i class='bx bx-chevron-right bx-rotate-90'
+                    style="font-size: large;"></i></div>
+                <h3 class="title" title="Extentions">Extentions</h3>
+              </div>
+            </div>
+            <div class="pane-body">
+              <div class="extensions-list">
+                <div class="monaco-list">
+                  <div class="monaco-list-rows">
+                    <div class="monaco-list-row" title="{{description}}" onclick="openDetail('{{_id}}')">
+                      <div class="extension-list-item">
+                        <div class="icon-container">
+                          <img class="icon" src="{{{icon_flow}}}" style="visibility: inherit;">
+                        </div>
+                        <div class="details">
+                          <div class="header-container">
+                            <div class="header">
+                              <span class="name">{{description}}</span><span
+                                class="install-count extension-install-count"><span
+                                  class="codicon codicon-extensions-install-count"><i class='bx bx-cloud-download'
+                                    style='color:#f7f2f2'></i></span><span class="count">87.8M</span></span><span
+                                class="ratings extension-ratings small">{{#rating}}<span
+                                  class="codicon codicon-extensions-star-full"><i class='bx bxs-star'></i></span><span
+                                  class="count">{{score}}</span></span>{{/rating}}<span
+                                class="sync-ignored"></span><span class="activation-status"></span>
+                              <div class="extension-remote-badge-container">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description ellipsis">
+                            {{summary}}
+                          </div>
+                          <div class="footer">
+                            <div class="author ellipsis">
+                              <div class="verified-publisher">
+                                <span class="extension-verified-publisher clickable"><span
+                                    class="codicon codicon-extensions-verified-publisher"></span></span>
+                              </div>
+                              <div class="publisher-name ellipsis" style="text-transform: uppercase;">
+                                {{type}}
+                              </div>
+                            </div>
+                            <div class="monaco-action-bar">
+                              <ul class="actions-container" role="toolbar">
+                                <li class="action-item action-dropdown-item" role="presentation" title="">
+                                  {{^isInstall}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label=""
+                                    onclick="installExtention('{{_id}}', '{{lastVersion}}')">Install</a>
+                                  {{/isInstall}}
+                                  {{#isInstall}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label="" onclick="deleteExtention('{{_id}}')">Uninstall</a>
+                                  {{/isInstall}}
+                                  <div class="action-dropdown-item-separator prominent">
+                                    <div>
+                                    </div>
+                                  </div>
+                                  <div class="monaco-dropdown">
+                                    <div class="dropdown-label">
+                                      <a
+                                        class="action-label dropdown codicon codicon-drop-down-button extension-action label prominent install action-dropdown">
+                                        {{^isInstall}}<i class='bx bx-down-arrow-alt'
+                                          style='color:#f7f2f2; font-size: 10px;'></i>
+                                        {{/isInstall}}
+                                        {{#isInstall}}<i class='bx bx-unlink'
+                                          style='color:#f7f2f2; font-size: 10px;'></i>
+                                        {{/isInstall}}
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="split-view-app app-installed" id="resizableDiv"
+            style="position: relative;background-color: rgb(24, 24, 24) !important;">
+            <div id="resize" class="resize"></div>
+            <div class="pane vertical expanded ">
+              <div class="pane-header extension-view-header expanded" tabindex="0" role="button"
+                style="display: flex; align-items: center; line-height: 10px;">
+                <div class="codicon codicon-view-pane-container-expanded"><i class='bx bx-chevron-right bx-rotate-90'
+                    style="font-size: large;"></i></div>
+                <h3 class="title" title="Application">Installed</h3>
+              </div>
+            </div>
+            <div class="pane-body">
+              <div class="extensions-list">
+                <div class="monaco-list">
+                  <div class="monaco-list-rows">
+                    <div class="monaco-list-row" onclick="openDetail('{{_id}}')">
+                      <div class="extension-list-item">
+                        <div class="icon-container">
+                          <img class="icon" src="{{{icon_flow}}}" style="visibility: inherit;">
+                        </div>
+                        <div class="details">
+                          <div class="header-container">
+                            <div class="header">
+                              <span class="name">{{description}}</span><span
+                                class="install-count extension-install-count"><span
+                                  class="codicon codicon-extensions-install-count"><i class='bx bx-cloud-download'
+                                    style='color:#f7f2f2'></i></span><span class="count">87.8M</span></span><span
+                                class="ratings extension-ratings small" title="Average rating: 4 out of 5"><span
+                                  class="codicon codicon-extensions-star-full"><i class='bx bxs-star'></i></span><span
+                                  class="count">4</span></span><span class="sync-ignored"></span><span
+                                class="activation-status"></span>
+                              <div class="extension-remote-badge-container">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description ellipsis">
+                            {{summary}}
+                          </div>
+                          <div class="footer">
+                            <div class="author ellipsis">
+                              <div class="verified-publisher">
+                                <span class="extension-verified-publisher clickable"><span
+                                    class="codicon codicon-extensions-verified-publisher"></span></span>
+                              </div>
+                              <div class="publisher-name ellipsis" style="text-transform: uppercase;">
+                                {{type}}
+                              </div>
+                            </div>
+                            <div class="monaco-action-bar">
+                              <ul class="actions-container" role="toolbar">
+                                <li class="action-item action-dropdown-item" role="presentation" title="">
+                                  {{#isApp}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label="" onclick="deleteApp('{{_id}}')">Uninstall</a>
+                                  {{/isApp}}
+                                  {{^isApp}}
+                                  <a class="action-label codicon extension-action label prominent install action-dropdown"
+                                    role="button" aria-label="" onclick="deleteExtention('{{_id}}')">Uninstall</a>
+                                  {{/isApp}}
+                                  <div class="action-dropdown-item-separator prominent">
+                                    <div>
+                                    </div>
+                                  </div>
+                                  <div class="monaco-dropdown">
+                                    <div class="dropdown-label">
+                                      <a
+                                        class="action-label dropdown codicon codicon-drop-down-button extension-action label prominent install action-dropdown"><i
+                                          class='bx bx-unlink' style='color:#f7f2f2; font-size: 10px;'></i></a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="col-md-9 col-lg-10 d-md-block bg-body-tertiary collapse split-view-view">
+        <div class="logo-split-view" style=" position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);
+          z-index: 1001;width: 100%;height: 100%;
+          background-color: rgb(33, 33, 33);">
+          <svg style=" position: fixed;top: 45%;left: 56%;transform: translate(-50%, -50%);" id=" svg" version="1.1"
+            width="400" height="400" viewBox="0, 0, 400,400" xmlns="http://www.w3.org/2000/svg">
+            <defs></defs>
+            <g id="svgg">
+              <path id="path0"
+                d="M197.981 32.823 C 183.368 33.448,168.895 35.888,144.823 41.784 C 105.551 51.404,75.811 69.924,69.611 88.622 C 64.639 103.618,73.249 120.620,90.884 130.627 C 119.289 146.746,158.168 153.888,196.273 149.985 C 256.826 143.782,321.642 115.365,330.386 91.185 C 334.471 79.889,330.843 69.627,319.834 61.334 C 315.603 58.147,302.785 50.621,301.588 50.621 C 301.078 50.621,284.028 58.950,283.927 59.249 C 283.883 59.378,285.350 60.230,287.187 61.142 C 307.063 71.007,313.520 80.841,307.910 92.702 C 297.006 115.756,231.596 138.877,177.174 138.914 C 111.054 138.960,68.746 111.668,89.454 82.328 C 108.806 54.910,182.053 35.542,229.969 45.175 C 232.873 45.759,237.538 46.803,240.336 47.497 C 243.134 48.190,245.719 48.752,246.081 48.746 C 246.895 48.731,264.062 40.577,264.210 40.135 C 264.327 39.784,251.894 36.655,247.360 35.894 C 232.651 33.425,212.786 32.190,197.981 32.823 M261.801 53.593 C 239.964 63.886,203.494 80.915,197.606 83.567 C 195.180 84.660,193.299 85.659,193.426 85.786 C 193.553 85.914,196.498 87.346,199.969 88.968 L 206.280 91.919 251.044 70.599 C 275.664 58.874,295.998 49.107,296.230 48.896 C 296.979 48.215,287.041 45.865,281.868 45.500 L 279.348 45.322 261.801 53.593 M190.886 46.587 C 143.569 49.557,97.222 69.313,90.352 89.441 C 82.739 111.747,117.003 130.529,169.099 132.606 C 218.876 134.591,284.510 114.996,301.448 93.093 C 306.170 86.987,305.862 78.890,300.730 74.189 C 298.147 71.824,280.480 61.801,278.894 61.801 C 278.296 61.801,210.718 93.195,210.199 93.714 C 209.949 93.964,222.378 100.000,223.142 100.000 C 223.382 100.000,234.628 94.969,248.132 88.820 C 275.102 76.540,273.171 77.302,274.285 78.494 C 286.180 91.207,247.165 111.520,202.290 115.977 C 166.842 119.497,130.287 112.769,116.569 100.199 C 104.397 89.047,121.794 72.316,154.363 63.853 C 175.696 58.310,202.578 56.539,218.827 59.605 L 222.251 60.251 231.700 55.727 C 241.742 50.918,241.994 50.778,241.103 50.510 C 232.454 47.904,204.585 45.728,190.886 46.587 M333.680 68.740 C 333.540 69.297,333.914 70.045,335.269 71.923 C 341.939 81.167,343.827 92.958,339.934 101.052 C 337.935 105.208,332.142 110.972,325.330 115.581 C 322.670 117.381,321.285 118.438,322.360 117.848 C 328.875 114.271,337.834 105.957,340.088 101.398 C 344.196 93.083,342.302 80.758,335.532 71.759 C 333.774 69.422,333.610 68.999,334.224 68.385 C 334.507 68.102,334.508 68.012,334.230 68.012 C 334.028 68.012,333.781 68.340,333.680 68.740 M56.339 80.521 C 49.150 84.146,42.338 87.782,41.202 88.600 C 33.342 94.265,27.933 102.929,26.257 112.542 C 25.734 115.541,25.641 189.847,26.054 273.588 L 26.242 311.616 33.075 314.803 C 36.832 316.556,40.015 317.995,40.147 318.001 C 40.279 318.008,40.377 281.762,40.365 237.456 C 40.341 147.648,40.152 155.721,42.354 152.233 C 50.485 139.352,69.335 143.158,74.361 158.696 C 74.941 160.489,81.309 180.334,88.511 202.795 C 95.713 225.256,103.104 248.306,104.935 254.017 C 106.767 259.728,108.412 264.450,108.591 264.510 C 108.770 264.569,116.478 251.372,125.721 235.182 C 146.779 198.295,145.247 200.440,152.451 197.756 C 153.751 197.272,154.424 196.954,153.947 197.049 C 148.426 198.156,144.682 201.481,140.240 209.220 C 138.886 211.579,137.174 214.457,136.436 215.615 C 135.697 216.774,135.093 217.857,135.093 218.022 C 135.093 218.188,134.953 218.323,134.783 218.323 C 134.579 218.323,134.472 211.546,134.472 198.613 L 134.472 178.903 136.676 176.407 C 139.513 173.192,143.376 170.282,147.671 168.124 C 149.550 167.180,150.738 166.506,150.311 166.627 C 142.628 168.804,134.902 176.069,129.206 186.474 C 127.809 189.026,124.176 195.245,121.133 200.293 C 118.090 205.342,115.223 210.223,114.763 211.140 C 113.466 213.727,113.955 215.186,106.493 186.491 C 98.503 155.768,97.259 151.310,95.812 148.237 C 92.742 141.714,89.040 137.950,81.522 133.704 C 54.277 118.320,49.375 97.970,68.233 78.536 C 70.499 76.201,71.144 75.347,71.065 74.790 C 70.858 73.332,69.708 73.779,56.339 80.521 M318.556 119.743 C 317.395 120.373,317.466 120.635,318.634 120.031 C 319.146 119.766,319.565 119.483,319.565 119.402 C 319.565 119.202,319.532 119.213,318.556 119.743 M304.037 127.019 C 303.439 127.346,303.090 127.614,303.261 127.614 C 303.432 127.614,304.061 127.346,304.658 127.019 C 305.256 126.691,305.606 126.424,305.435 126.424 C 305.264 126.424,304.635 126.691,304.037 127.019 M295.963 130.901 C 295.536 131.145,295.326 131.344,295.497 131.344 C 295.668 131.344,296.157 131.145,296.584 130.901 C 297.011 130.657,297.220 130.457,297.050 130.457 C 296.879 130.457,296.390 130.657,295.963 130.901 M362.422 133.851 C 361.483 134.347,360.854 134.753,361.025 134.753 C 361.196 134.753,362.104 134.347,363.043 133.851 C 363.983 133.355,364.612 132.949,364.441 132.949 C 364.270 132.949,363.362 133.355,362.422 133.851 M371.739 139.130 C 370.800 139.627,370.171 140.033,370.342 140.033 C 370.512 140.033,371.421 139.627,372.360 139.130 C 373.300 138.634,373.929 138.228,373.758 138.228 C 373.587 138.228,372.679 138.634,371.739 139.130 M350.621 139.596 C 349.852 140.008,349.363 140.345,349.534 140.345 C 349.705 140.345,350.474 140.008,351.242 139.596 C 352.011 139.185,352.500 138.848,352.329 138.848 C 352.158 138.848,351.390 139.185,350.621 139.596 M339.130 145.186 C 338.362 145.598,337.873 145.935,338.043 145.935 C 338.214 145.935,338.983 145.598,339.752 145.186 C 340.520 144.775,341.009 144.438,340.839 144.438 C 340.668 144.438,339.899 144.775,339.130 145.186 M356.832 146.429 C 356.064 146.840,355.575 147.177,355.745 147.177 C 355.916 147.177,356.685 146.840,357.453 146.429 C 358.222 146.017,358.711 145.680,358.540 145.680 C 358.370 145.680,357.601 146.017,356.832 146.429 M260.248 147.671 C 259.821 147.915,259.612 148.115,259.783 148.115 C 259.953 148.115,260.443 147.915,260.870 147.671 C 261.297 147.427,261.506 147.227,261.335 147.227 C 261.165 147.227,260.675 147.427,260.248 147.671 M256.211 149.534 C 255.784 149.778,255.575 149.978,255.745 149.978 C 255.916 149.978,256.405 149.778,256.832 149.534 C 257.259 149.290,257.469 149.090,257.298 149.090 C 257.127 149.090,256.638 149.290,256.211 149.534 M327.329 150.932 C 326.390 151.428,325.761 151.834,325.932 151.834 C 326.102 151.834,327.011 151.428,327.950 150.932 C 328.890 150.435,329.519 150.029,329.348 150.029 C 329.177 150.029,328.269 150.435,327.329 150.932 M345.031 152.174 C 344.433 152.501,344.084 152.769,344.255 152.769 C 344.425 152.769,345.054 152.501,345.652 152.174 C 346.250 151.847,346.599 151.579,346.429 151.579 C 346.258 151.579,345.629 151.847,345.031 152.174 M53.380 153.845 C 51.613 154.476,50.418 155.483,49.716 156.933 L 49.068 158.271 49.068 240.124 L 49.068 321.978 59.651 326.856 C 65.471 329.539,70.327 331.639,70.443 331.524 C 70.558 331.408,70.619 306.859,70.578 276.970 C 70.508 225.657,70.533 222.632,71.039 222.730 C 71.683 222.854,72.503 225.430,81.700 256.211 C 85.298 268.253,89.042 280.411,90.021 283.230 L 91.800 288.354 105.450 294.797 C 112.957 298.340,119.158 301.240,119.229 301.241 C 119.704 301.246,117.805 300.288,109.084 296.121 L 105.280 294.303 105.280 287.243 L 105.280 280.182 105.978 280.332 C 106.447 280.432,106.342 280.306,105.658 279.948 C 104.068 279.118,103.632 278.233,101.455 271.429 C 61.984 148.055,64.999 156.930,61.876 154.950 C 59.421 153.393,55.919 152.937,53.380 153.845 M315.839 156.522 C 314.899 157.018,314.270 157.424,314.441 157.424 C 314.612 157.424,315.520 157.018,316.460 156.522 C 317.399 156.025,318.028 155.619,317.857 155.619 C 317.686 155.619,316.778 156.025,315.839 156.522 M240.062 156.988 C 239.635 157.232,239.425 157.431,239.596 157.431 C 239.767 157.431,240.256 157.232,240.683 156.988 C 241.110 156.743,241.320 156.544,241.149 156.544 C 240.978 156.544,240.489 156.743,240.062 156.988 M333.230 157.919 C 332.461 158.331,331.972 158.668,332.143 158.668 C 332.314 158.668,333.082 158.331,333.851 157.919 C 334.620 157.508,335.109 157.171,334.938 157.171 C 334.767 157.171,333.998 157.508,333.230 157.919 M236.025 158.851 C 235.598 159.095,235.388 159.295,235.559 159.295 C 235.730 159.295,236.219 159.095,236.646 158.851 C 237.073 158.607,237.283 158.407,237.112 158.407 C 236.941 158.407,236.452 158.607,236.025 158.851 M231.988 160.714 C 231.561 160.958,231.351 161.158,231.522 161.158 C 231.693 161.158,232.182 160.958,232.609 160.714 C 233.036 160.470,233.245 160.270,233.075 160.270 C 232.904 160.270,232.415 160.470,231.988 160.714 M304.348 162.112 C 303.408 162.608,302.780 163.014,302.950 163.014 C 303.121 163.014,304.030 162.608,304.969 162.112 C 305.908 161.615,306.537 161.209,306.366 161.209 C 306.196 161.209,305.287 161.615,304.348 162.112 M228.571 162.267 C 228.144 162.511,227.935 162.711,228.106 162.711 C 228.276 162.711,228.766 162.511,229.193 162.267 C 229.620 162.023,229.829 161.823,229.658 161.823 C 229.488 161.823,228.998 162.023,228.571 162.267 M321.739 163.509 C 320.970 163.921,320.481 164.258,320.652 164.258 C 320.823 164.258,321.592 163.921,322.360 163.509 C 323.129 163.098,323.618 162.761,323.447 162.761 C 323.276 162.761,322.508 163.098,321.739 163.509 M221.118 165.683 C 220.691 165.927,220.481 166.127,220.652 166.127 C 220.823 166.127,221.312 165.927,221.739 165.683 C 222.166 165.439,222.376 165.239,222.205 165.239 C 222.034 165.239,221.545 165.439,221.118 165.683 M217.702 167.236 C 217.275 167.480,217.065 167.680,217.236 167.680 C 217.407 167.680,217.896 167.480,218.323 167.236 C 218.750 166.992,218.960 166.792,218.789 166.792 C 218.618 166.792,218.129 166.992,217.702 167.236 M292.547 167.857 C 291.778 168.269,291.289 168.605,291.460 168.605 C 291.630 168.605,292.399 168.269,293.168 167.857 C 293.936 167.446,294.425 167.109,294.255 167.109 C 294.084 167.109,293.315 167.446,292.547 167.857 M310.248 169.099 C 309.480 169.511,308.991 169.848,309.161 169.848 C 309.332 169.848,310.101 169.511,310.870 169.099 C 311.638 168.688,312.127 168.351,311.957 168.351 C 311.786 168.351,311.017 168.688,310.248 169.099 M364.286 169.410 C 363.859 169.654,363.649 169.854,363.820 169.854 C 363.991 169.854,364.480 169.654,364.907 169.410 C 365.334 169.166,365.543 168.966,365.373 168.966 C 365.202 168.966,364.713 169.166,364.286 169.410 M281.056 173.447 C 280.287 173.859,279.798 174.196,279.969 174.196 C 280.140 174.196,280.908 173.859,281.677 173.447 C 282.446 173.036,282.935 172.699,282.764 172.699 C 282.593 172.699,281.825 173.036,281.056 173.447 M204.037 173.447 C 203.610 173.691,203.401 173.891,203.571 173.891 C 203.742 173.891,204.231 173.691,204.658 173.447 C 205.085 173.203,205.295 173.003,205.124 173.003 C 204.953 173.003,204.464 173.203,204.037 173.447 M300.000 174.068 C 299.573 174.312,299.363 174.512,299.534 174.512 C 299.705 174.512,300.194 174.312,300.621 174.068 C 301.048 173.824,301.258 173.624,301.087 173.624 C 300.916 173.624,300.427 173.824,300.000 174.068 M293.489 177.620 C 293.273 178.023,293.116 193.597,293.012 224.902 C 292.926 250.577,292.787 287.783,292.702 307.582 C 292.617 327.382,292.632 343.496,292.736 343.392 C 292.840 343.289,293.040 306.099,293.182 260.749 C 293.365 201.862,293.536 178.112,293.780 177.657 C 293.968 177.306,294.051 177.019,293.966 177.019 C 293.881 177.019,293.666 177.289,293.489 177.620 M269.565 179.037 C 268.797 179.449,268.307 179.786,268.478 179.786 C 268.649 179.786,269.418 179.449,270.186 179.037 C 270.955 178.626,271.444 178.289,271.273 178.289 C 271.102 178.289,270.334 178.626,269.565 179.037 M357.842 181.128 L 355.590 182.426 355.590 185.559 L 355.590 188.693 358.352 189.876 L 361.114 191.059 363.399 189.862 L 365.683 188.665 365.775 186.025 C 365.908 182.186,365.881 182.133,363.151 180.889 C 360.260 179.571,360.566 179.558,357.842 181.128 M257.764 184.783 C 256.825 185.279,256.196 185.685,256.366 185.685 C 256.537 185.685,257.446 185.279,258.385 184.783 C 259.325 184.286,259.953 183.880,259.783 183.880 C 259.612 183.880,258.703 184.286,257.764 184.783 M276.087 185.714 C 274.464 186.551,273.276 187.236,273.447 187.236 C 273.618 187.236,275.085 186.551,276.708 185.714 C 278.331 184.878,279.519 184.193,279.348 184.193 C 279.177 184.193,277.710 184.878,276.087 185.714 M322.360 188.665 C 321.933 188.909,321.724 189.108,321.894 189.108 C 322.065 189.108,322.554 188.909,322.981 188.665 C 323.408 188.420,323.618 188.221,323.447 188.221 C 323.276 188.221,322.787 188.420,322.360 188.665 M245.652 190.683 C 244.713 191.180,244.084 191.586,244.255 191.586 C 244.425 191.586,245.334 191.180,246.273 190.683 C 247.213 190.187,247.842 189.781,247.671 189.781 C 247.500 189.781,246.592 190.187,245.652 190.683 M263.354 191.925 C 261.731 192.762,260.543 193.447,260.714 193.447 C 260.885 193.447,262.352 192.762,263.975 191.925 C 265.598 191.089,266.786 190.404,266.615 190.404 C 266.444 190.404,264.977 191.089,263.354 191.925 M310.792 193.966 C 309.588 194.620,309.724 194.845,310.947 194.223 C 312.118 193.628,312.325 193.473,311.931 193.491 C 311.774 193.498,311.262 193.712,310.792 193.966 M233.540 196.584 C 232.601 197.080,231.972 197.486,232.143 197.486 C 232.314 197.486,233.222 197.080,234.161 196.584 C 235.101 196.088,235.730 195.681,235.559 195.681 C 235.388 195.681,234.480 196.088,233.540 196.584 M159.511 196.595 C 163.728 196.941,165.105 197.457,174.925 202.369 C 179.871 204.844,183.968 206.819,184.029 206.758 C 184.089 206.698,179.846 204.518,174.600 201.915 C 164.397 196.852,162.675 196.246,158.696 196.323 C 156.787 196.360,156.831 196.374,159.511 196.595 M252.795 197.050 C 252.026 197.461,251.537 197.798,251.708 197.798 C 251.879 197.798,252.648 197.461,253.416 197.050 C 254.185 196.638,254.674 196.301,254.503 196.301 C 254.332 196.301,253.564 196.638,252.795 197.050 M249.689 198.602 C 248.921 199.014,248.402 199.357,248.537 199.365 C 248.867 199.384,251.242 198.163,251.242 197.975 C 251.242 197.769,251.255 197.764,249.689 198.602 M221.429 202.484 C 220.489 202.981,219.860 203.387,220.031 203.387 C 220.202 203.387,221.110 202.981,222.050 202.484 C 222.989 201.988,223.618 201.582,223.447 201.582 C 223.276 201.582,222.368 201.988,221.429 202.484 M238.509 204.037 C 236.887 204.874,235.699 205.559,235.870 205.559 C 236.040 205.559,237.508 204.874,239.130 204.037 C 240.753 203.201,241.941 202.516,241.770 202.516 C 241.599 202.516,240.132 203.201,238.509 204.037 M364.752 204.676 C 362.873 205.685,361.243 206.548,361.130 206.594 C 361.016 206.639,360.823 208.739,360.700 211.259 L 360.475 215.840 363.120 217.062 L 365.764 218.283 365.951 233.288 C 366.054 241.540,366.221 255.349,366.321 263.975 L 366.503 279.658 361.656 282.609 L 356.808 285.559 357.003 290.062 L 357.198 294.565 348.750 299.790 C 340.662 304.793,340.264 304.999,339.406 304.644 C 338.259 304.169,338.123 306.119,340.932 282.764 L 343.323 262.888 346.273 261.278 C 347.896 260.393,349.608 259.456,350.078 259.196 L 350.932 258.725 350.904 254.285 C 350.890 251.843,350.785 249.177,350.672 248.361 L 350.466 246.878 346.187 244.867 C 340.945 242.405,341.805 242.356,336.627 245.408 L 332.298 247.958 332.333 250.610 C 332.352 252.068,332.457 254.560,332.566 256.148 L 332.764 259.035 335.714 260.355 C 339.394 262.002,339.314 259.331,336.407 283.375 L 334.005 303.240 329.864 305.687 L 325.722 308.134 325.943 313.616 C 326.064 316.632,326.215 319.189,326.278 319.299 C 326.380 319.476,335.223 323.464,335.980 323.675 C 336.145 323.720,338.265 322.710,340.692 321.429 L 345.106 319.099 344.900 313.337 L 344.695 307.574 350.941 303.680 L 357.187 299.787 362.056 301.859 C 364.734 302.999,367.709 304.252,368.666 304.644 L 370.407 305.356 375.809 302.349 C 378.780 300.695,381.306 299.245,381.421 299.127 C 381.663 298.880,380.951 284.436,380.675 283.988 C 380.573 283.824,378.328 282.729,375.686 281.556 L 370.881 279.421 370.694 257.490 C 370.590 245.428,370.434 231.812,370.347 227.233 L 370.188 218.907 372.982 217.635 L 375.776 216.362 375.776 211.463 L 375.776 206.564 372.145 204.680 C 370.148 203.643,368.436 202.806,368.341 202.819 C 368.245 202.832,366.630 203.668,364.752 204.676 M209.938 208.075 C 208.315 208.911,207.127 209.596,207.298 209.596 C 207.469 209.596,208.936 208.911,210.559 208.075 C 212.182 207.238,213.370 206.553,213.199 206.553 C 213.028 206.553,211.561 207.238,209.938 208.075 M152.339 207.444 C 150.921 208.379,151.488 207.425,130.672 243.900 C 109.978 280.164,110.345 279.572,108.106 280.262 C 106.493 280.759,107.011 280.908,108.709 280.436 C 110.499 279.939,111.385 278.653,118.011 266.925 C 143.766 221.343,150.653 209.453,152.054 208.152 C 153.638 206.682,153.690 206.554,152.339 207.444 M186.646 208.075 C 187.244 208.402,187.873 208.670,188.043 208.670 C 188.214 208.670,187.865 208.402,187.267 208.075 C 186.669 207.747,186.040 207.479,185.870 207.479 C 185.699 207.479,186.048 207.747,186.646 208.075 M226.708 209.783 C 225.939 210.194,225.450 210.531,225.621 210.531 C 225.792 210.531,226.561 210.194,227.329 209.783 C 228.098 209.371,228.587 209.034,228.416 209.034 C 228.245 209.034,227.477 209.371,226.708 209.783 M330.823 212.144 C 326.439 214.668,326.859 213.705,327.220 220.415 L 327.421 224.157 331.707 226.089 L 335.992 228.022 339.813 225.999 C 342.890 224.370,343.629 223.849,343.611 223.324 C 343.599 222.965,343.564 220.641,343.534 218.159 L 343.478 213.648 339.709 211.793 C 335.065 209.507,335.428 209.493,330.823 212.144 M196.506 211.399 C 196.891 211.473,197.519 211.473,197.904 211.399 C 198.288 211.325,197.974 211.265,197.205 211.265 C 196.436 211.265,196.122 211.325,196.506 211.399 M200.237 211.400 C 200.623 211.474,201.182 211.471,201.479 211.394 C 201.776 211.316,201.460 211.255,200.776 211.258 C 200.093 211.262,199.850 211.325,200.237 211.400 M179.089 274.612 C 178.976 307.620,178.790 345.061,178.676 357.813 L 178.470 380.998 181.037 382.289 C 182.449 382.999,183.657 383.527,183.721 383.463 C 183.785 383.400,182.701 382.797,181.312 382.124 L 178.787 380.901 178.990 357.764 C 179.281 324.603,179.635 214.596,179.451 214.596 C 179.365 214.596,179.203 241.603,179.089 274.612 M215.839 215.062 C 215.411 215.306,215.202 215.506,215.373 215.506 C 215.543 215.506,216.033 215.306,216.460 215.062 C 216.887 214.818,217.096 214.618,216.925 214.618 C 216.755 214.618,216.266 214.818,215.839 215.062 M262.575 287.578 C 262.575 326.778,262.611 342.814,262.655 323.214 C 262.699 303.614,262.699 271.541,262.655 251.941 C 262.611 232.341,262.575 248.377,262.575 287.578 M254.348 220.342 C 253.921 220.586,253.711 220.785,253.882 220.785 C 254.053 220.785,254.542 220.586,254.969 220.342 C 255.396 220.098,255.606 219.898,255.435 219.898 C 255.264 219.898,254.775 220.098,254.348 220.342 M249.689 222.516 C 249.262 222.760,249.053 222.959,249.224 222.959 C 249.394 222.959,249.884 222.760,250.311 222.516 C 250.738 222.271,250.947 222.072,250.776 222.072 C 250.606 222.072,250.116 222.271,249.689 222.516 M240.994 226.553 C 240.567 226.797,240.357 226.997,240.528 226.997 C 240.699 226.997,241.188 226.797,241.615 226.553 C 242.042 226.309,242.252 226.109,242.081 226.109 C 241.910 226.109,241.421 226.309,240.994 226.553 M236.335 228.727 C 235.908 228.971,235.699 229.171,235.870 229.171 C 236.040 229.171,236.530 228.971,236.957 228.727 C 237.384 228.483,237.593 228.283,237.422 228.283 C 237.252 228.283,236.762 228.483,236.335 228.727 M227.640 232.764 C 227.213 233.008,227.003 233.208,227.174 233.208 C 227.345 233.208,227.834 233.008,228.261 232.764 C 228.688 232.520,228.898 232.320,228.727 232.320 C 228.556 232.320,228.067 232.520,227.640 232.764 M222.981 234.938 C 222.554 235.182,222.345 235.382,222.516 235.382 C 222.686 235.382,223.175 235.182,223.602 234.938 C 224.030 234.694,224.239 234.494,224.068 234.494 C 223.898 234.494,223.408 234.694,222.981 234.938 M209.627 241.149 C 209.200 241.393,208.991 241.593,209.161 241.593 C 209.332 241.593,209.821 241.393,210.248 241.149 C 210.675 240.905,210.885 240.705,210.714 240.705 C 210.543 240.705,210.054 240.905,209.627 241.149 M152.361 247.463 C 152.262 247.624,152.424 247.737,152.721 247.713 C 153.214 247.675,153.261 248.118,153.261 252.795 C 153.261 272.335,152.725 368.574,152.614 368.970 C 152.483 369.434,153.926 370.401,154.256 370.071 C 154.332 369.995,154.087 369.835,153.711 369.716 L 153.028 369.499 153.300 314.020 C 153.657 241.123,153.680 247.390,153.057 247.270 C 152.774 247.215,152.461 247.302,152.361 247.463 M121.429 302.329 C 122.539 302.910,123.587 303.386,123.758 303.386 C 123.929 303.386,123.160 302.910,122.050 302.329 C 120.939 301.748,119.891 301.272,119.720 301.272 C 119.550 301.272,120.318 301.748,121.429 302.329 M306.211 337.422 C 305.784 337.666,305.575 337.866,305.745 337.866 C 305.916 337.866,306.405 337.666,306.832 337.422 C 307.259 337.178,307.469 336.979,307.298 336.979 C 307.127 336.979,306.638 337.178,306.211 337.422 M301.553 339.596 C 301.126 339.840,300.916 340.040,301.087 340.040 C 301.258 340.040,301.747 339.840,302.174 339.596 C 302.601 339.352,302.811 339.152,302.640 339.152 C 302.469 339.152,301.980 339.352,301.553 339.596 M296.894 341.770 C 296.467 342.014,296.258 342.214,296.429 342.214 C 296.599 342.214,297.089 342.014,297.516 341.770 C 297.943 341.526,298.152 341.326,297.981 341.326 C 297.811 341.326,297.321 341.526,296.894 341.770 M280.357 349.867 C 279.196 350.497,279.267 350.759,280.435 350.155 C 280.947 349.890,281.366 349.607,281.366 349.526 C 281.366 349.326,281.333 349.338,280.357 349.867 M272.904 353.748 C 272.263 354.086,271.739 354.432,271.739 354.517 C 271.739 354.602,272.298 354.386,272.981 354.037 C 273.665 353.689,274.224 353.336,274.224 353.255 C 274.224 353.051,274.221 353.052,272.904 353.748 M157.143 371.584 C 157.570 371.828,158.059 372.028,158.230 372.028 C 158.401 372.028,158.191 371.828,157.764 371.584 C 157.337 371.340,156.848 371.140,156.677 371.140 C 156.506 371.140,156.716 371.340,157.143 371.584 M161.180 373.447 C 161.607 373.691,162.096 373.891,162.267 373.891 C 162.438 373.891,162.228 373.691,161.801 373.447 C 161.374 373.203,160.885 373.003,160.714 373.003 C 160.543 373.003,160.753 373.203,161.180 373.447 M165.217 375.311 C 165.644 375.555,166.134 375.754,166.304 375.754 C 166.475 375.754,166.266 375.555,165.839 375.311 C 165.411 375.066,164.922 374.867,164.752 374.867 C 164.581 374.867,164.790 375.066,165.217 375.311 M192.236 387.733 C 193.688 388.484,195.016 389.099,195.186 389.099 C 195.357 389.099,194.309 388.484,192.857 387.733 C 191.405 386.981,190.078 386.367,189.907 386.367 C 189.736 386.367,190.784 386.981,192.236 387.733 "
+                stroke="none" fill="#111111" fill-rule="evenodd"></path>
+              <path id="path1"
+                d="M334.224 68.385 C 333.610 68.999,333.774 69.422,335.532 71.759 C 342.302 80.758,344.196 93.083,340.088 101.398 C 335.504 110.673,324.732 117.666,289.596 134.172 C 280.731 138.337,254.270 150.696,251.553 151.941 C 248.963 153.127,246.078 154.458,243.323 155.738 C 237.946 158.235,214.620 168.902,206.898 172.394 C 197.346 176.715,198.347 176.571,193.983 174.248 C 186.841 170.445,176.649 166.292,171.739 165.183 C 159.140 162.337,145.137 166.820,136.676 176.407 L 134.472 178.903 134.472 198.613 C 134.472 209.454,134.577 218.322,134.705 218.321 C 134.833 218.319,135.094 218.005,135.284 217.622 C 135.475 217.239,136.470 215.528,137.496 213.820 C 138.522 212.112,140.231 209.233,141.296 207.423 C 145.528 200.224,150.578 196.868,157.919 196.378 C 162.444 196.076,163.677 196.512,177.329 203.239 C 192.877 210.901,195.737 211.851,201.189 211.166 C 204.862 210.705,200.207 212.872,258.696 184.392 C 345.502 142.122,374.044 128.261,374.276 128.261 C 374.788 128.261,374.578 108.752,374.033 105.567 C 372.686 97.712,368.999 90.328,363.538 84.553 C 359.236 80.003,356.828 78.430,345.781 72.953 C 335.877 68.043,334.937 67.671,334.224 68.385 M367.547 141.423 C 356.843 146.672,304.278 172.258,298.886 174.844 C 295.766 176.340,293.805 177.461,293.664 177.828 C 293.439 178.414,292.814 343.213,293.036 343.444 C 293.099 343.511,297.157 341.695,302.052 339.409 L 310.952 335.252 310.757 324.226 C 310.605 315.656,310.093 218.567,310.093 198.335 L 310.093 194.342 341.770 179.799 C 359.193 171.801,373.692 165.107,373.991 164.924 C 374.564 164.573,374.871 138.180,374.301 138.212 C 374.173 138.219,371.134 139.664,367.547 141.423 M271.892 187.990 C 236.567 205.335,208.461 218.896,206.740 219.427 C 200.857 221.239,190.725 219.936,183.641 216.455 C 181.561 215.432,179.802 214.596,179.732 214.596 C 179.663 214.596,179.513 241.603,179.400 274.612 C 179.286 307.620,179.101 345.040,178.987 357.766 L 178.781 380.905 188.226 385.511 C 195.173 388.899,197.794 390.038,198.137 389.822 C 198.549 389.562,198.602 381.242,198.602 317.979 L 198.602 246.430 199.689 245.860 C 200.287 245.547,214.682 238.826,231.677 230.924 L 262.578 216.559 262.656 287.627 C 262.704 331.365,262.846 358.696,263.024 358.696 C 263.278 358.696,274.995 352.779,281.286 349.474 L 283.536 348.292 283.538 265.295 C 283.539 219.647,283.505 182.309,283.463 182.322 C 283.420 182.336,278.213 184.886,271.892 187.990 M155.057 206.230 C 151.467 207.644,151.999 206.773,118.011 266.925 C 110.307 280.560,109.611 281.370,106.362 280.473 L 105.280 280.174 105.280 287.237 L 105.280 294.299 111.708 297.382 C 115.244 299.078,119.471 301.113,121.102 301.904 C 123.325 302.982,124.160 303.254,124.432 302.991 C 124.632 302.798,131.030 290.157,138.648 274.901 C 149.721 252.728,152.607 247.183,153.036 247.266 C 153.684 247.391,153.658 240.889,153.300 313.982 L 153.028 369.424 161.308 373.262 C 165.862 375.373,169.660 377.028,169.748 376.940 C 169.957 376.730,170.559 247.205,170.437 228.719 L 170.342 214.427 169.329 212.371 C 166.648 206.926,160.264 204.179,155.057 206.230 "
+                stroke="none" fill="#111111" fill-rule="evenodd"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="loader-three-back">
+          <div class="three-body">
+            <div class="three-body__dot"></div>
+            <div class="three-body__dot"></div>
+            <div class="three-body__dot"></div>
+          </div>
+        </div>
+        <div class="split-view-container">
+          <div class="title tabs show-file-icons">
+            <div class="tabs-and-actions-container tabs-border-bottom"
+              style="--tabs-border-bottom-color: rgba(255, 255, 255, 0.08);">
+              <div class="monaco-scrollable-element">
+                <div class="tabs-container">
+                  <div class="tab tab-actions-right sizing-fit has-icon tab-border-bottom tab-border-top" id="{{_id}}">
+                    <div class="tab-border-top-container">
+                    </div>
+                    <div class="monaco-icon-label file-icon tab-label tab-label-has-badge italic">
+                      <div class="monaco-icon-label-container">
+                        <span class="monaco-icon-name-container"><a class="label-name"
+                            style="color: white;">{{description}}</a></span>
+                      </div>
+                    </div>
+                    <div class="tab-actions" onclick="closeTab(this.parentNode)">
+                      <div class="monaco-action-bar animated">
+                        <ul class="actions-container" role="presentation" aria-label="Tab actions">
+                          <li class="action-item" role="presentation" title="Close">
+                            <a class="action-label codicon codicon-close" role="button" aria-label="Close"
+                              tabindex="0"><i class='bx bx-x'></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="editor-container" style="background-color: rgb(31, 31, 31); height: 100%;">
+            <div class="editor-instance">
+              <div class="extension-editor" data-keybinding-context="30" tabindex="0" role="document"
+                style="outline: none;">
+                <div class="header">
+                  <div class="icon-container detail">
+                    <img class="icon" draggable="false" src="{{{icon_flow}}}">
+                    <div class="extension-remote-badge-container">
+                    </div>
+                  </div>
+                  <div class="details">
+                    <div class="title">
+                      <span class="name clickable" title="Extension name" role="heading"
+                        tabindex="0">{{description}}</span><code class="version"
+                        title="Extension Version">v{{lastVersion}}</code>
+                    </div>
+                    <div class="subtitle">
+                      <div class="subtitle-entry">
+                        <div class="publisher clickable" title="Publisher" tabindex="0" role="button">
+                          <div class="publisher-name">
+                            {{gitOwners.0}}
+                          </div>
+                          <div class="verified-publisher">
+                            <span class="extension-verified-publisher clickable" tabindex="0" title="" role="link"><span
+                                class="codicon codicon-extensions-verified-publisher"></span><span
+                                class="extension-verified-publisher-domain">{{type}}</span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="subtitle-entry">
+                        <span class="rating clickable extension-ratings" title="Average rating: 4 out of 5" tabindex="0"
+                          role="link"><span class="codicon codicon-extensions-star-full"></span><span
+                            class="codicon codicon-extensions-star-full"></span><span
+                            class="codicon codicon-extensions-star-full"></span><span
+                            class="codicon codicon-extensions-star-full"></span><span
+                            class="codicon codicon-extensions-star-empty"></span><span style="padding-left: 1px;">
+                            (542)</span></span>
+                      </div> -->
+                      <div class="subtitle-entry">
+                      </div>
+                    </div>
+                    <div class="description">
+                      {{summary}}
+                    </div>
+                    <div class="actions-status-container">
+                      <div class="monaco-action-bar">
+                        <ul class="actions-container" role="toolbar">
+                          <li class="action-item action-dropdown-item" role="presentation" title="">
+                            {{^isInstall}}
+                            {{#isApp}}
+                            <a class="action-label codicon extension-action label prominent install action-dropdown"
+                              role="button" aria-label="" onclick="installApp('{{_id}}', '{{lastVersion}}')">Install</a>
+                            {{/isApp}}
+                            {{^isApp}}
+                            <a class="action-label codicon extension-action label prominent install action-dropdown"
+                              role="button" aria-label=""
+                              onclick="installExtention('{{_id}}', '{{lastVersion}}')">Install</a>
+                            {{/isApp}}
+                            {{/isInstall}}
+                            {{#isInstall}}
+                            {{#isApp}}
+                            <a class="action-label codicon extension-action label prominent install action-dropdown"
+                              role="button" aria-label="" onclick="deleteApp('{{_id}}')">Uninstall</a>
+                            {{/isApp}}
+                            {{^isApp}}
+                            <a class="action-label codicon extension-action label prominent install action-dropdown"
+                              role="button" aria-label="" onclick="deleteExtention('{{_id}}')">Uninstall</a>
+                            {{/isApp}}
+                            {{/isInstall}}
+                            <div class="action-dropdown-item-separator prominent">
+                              <div>
+                              </div>
+                            </div>
+                            <div class="monaco-dropdown">
+                              <div class="dropdown-label">
+                                <a class="action-label dropdown codicon codicon-drop-down-button extension-action label prominent install action-dropdown"
+                                  role="button" aria-haspopup="true" aria-expanded="false" title="More Actions..."
+                                  aria-label="More Actions..." tabindex="0"></a>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="navbar" style="padding-bottom: 0;">
+                    <div class="monaco-action-bar">
+                      <ul class="actions-container" role="toolbar">
+                        <li class="action-item " role="presentation">
+                          <a class="action-label tab-header"
+                            onclick="ClickFunc($(this),$('.readme-container.tab-content'))">Details</a>
+                        </li>
+                        <li class="action-item " role="presentation">
+                          <a class="action-label tab-header"
+                            onclick="ClickFunc($(this), $('.version-container.tab-content'))">Version</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <div class="details">
+                      <div class="readme-container tab-content">
+                        {{{readme}}}
+                      </div>
+                      <div class="version-container tab-content">
+                        <div class="details-tab">
+                          <div class="version-history-top-container">
+                            <!-- <div class="ms-grid vh-redirection-message-bar-container">
+                              <div class="vh-redirection-message-bar"><i
+                                  class="vh-redirection-info-icon bowtie-icon bowtie-status-info-outline"></i><span
+                                  class="vh-redirection-info-text" role="status"><a
+                                    href="https://marketplace.visualstudio.com/items/adpyke.codesnap/changelog"
+                                    target="_blank" rel="noreferrer noopener" title="Changelog"
+                                    class="vh-redirection-info-text-anchor-tag">CHANGE
+                                    LOG</a></span></div>
+                            </div> -->
+                            <div class="ms-Grid version-history-container-grid">
+                              <table class="version-history-table" role="table" aria-label="Version History Table">
+                                <thead class="version-history-table-thead">
+                                  <tr class="version-history-container-row">
+                                    <th class="version-history-container-column">
+                                      Version</th>
+                                    <th class="version-history-container-column">
+                                      Last Updated</th>
+                                    <th class="version-history-container-column">
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody class="version-history-table-body">
+                                  <!-- {{#versions}} -->
+                                  <tr class="version-history-container-row">
+                                    <td class="version-history-container-column">
+                                      {{version}}</td>
+                                    <td class="version-history-container-column" title="{{last_update}}">{{last_update}}
+                                    </td>
+                                    <td class="version-history-container-column">
+                                      {{^isInstall}}
+                                      {{#isApp}}
+                                      <a href="#" onclick="installApp('{{_id}}', '{{version}}')"
+                                        rel="noreferrer noopener" title="Download"
+                                        aria-label="version {{version}} Download">Download</a>
+                                      {{/isApp}}
+                                      {{^isApp}}
+                                      <a href="#" onclick="installExtention('{{_id}}', '{{version}}')"
+                                        rel="noreferrer noopener" title="Download"
+                                        aria-label="version {{version}} Download">Download</a>
+                                      {{/isApp}}
+                                      {{/isInstall}}
+                                    </td>
+                                  </tr>
+                                  <!-- {{/versions}} -->
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="additional-details-container">
+                        <div class="monaco-scrollable-element " role="presentation"
+                          style="position: relative; overflow: hidden;">
+                          <div class="additional-details-content" tabindex="0">
+                            <!-- <div class="categories-container additional-details-element">
+                              <div class="additional-details-title">
+                                Categories
+                              </div>
+                              <div class="categories" style="white-space: normal">
+                                <span class="category" tabindex="0">Programming
+                                  Languages</span><span class="category" tabindex="0">Linters</span><span
+                                  class="category" tabindex="0">Debuggers</span><span class="category"
+                                  tabindex="0">Formatters</span><span class="category" tabindex="0">Data
+                                  Science</span><span class="category" tabindex="0">Machine
+                                  Learning</span><span class="category" tabindex="0">Notebooks</span>
+                              </div>
+                            </div> -->
+                            <div class="categories-container additional-details-element">
+                              <div class="additional-details-title">
+                                Tag
+                              </div>
+                              <div class="categories" style="white-space: normal">
+                                {{#tags}}
+                                <span class="category" tabindex="0">{{.}}</span>
+                                {{/tags}}
+                              </div>
+                            </div>
+                            <!-- <div class="resources-container additional-details-element">
+                              <div class="additional-details-title">
+                                Extension
+                                Resources
+                              </div>
+                              <div class="resources">
+                                <a class="resource"
+                                  title="https://marketplace.visualstudio.com/items?itemName%3Dms-python.python"
+                                  tabindex="0">Marketplace</a><a class="resource"
+                                  title="https://github.com/Microsoft/vscode-python.git" tabindex="0">Repository</a><a
+                                  class="resource"
+                                  title="https://ms-python.gallerycdn.vsassets.io/extensions/ms-python/python/2023.8.0/1683153251161/Microsoft.VisualStudio.Services.Content.License"
+                                  tabindex="0">License</a><a class="resource"
+                                  title="https://marketplace.visualstudio.com/publishers/ms-python"
+                                  tabindex="0">Microsoft</a>
+                              </div>
+                            </div> -->
+                            <div class="more-info-container additional-details-element">
+                              <div class="additional-details-title">
+                                More
+                                Info
+                              </div>
+                              <div class="more-info">
+                                <div class="more-info-entry">
+                                  <div>
+                                    Created
+                                  </div>
+                                  <div>
+                                    {{created_at}}
+                                  </div>
+                                </div>
+                                <div class="more-info-entry">
+                                  <div>
+                                    Updated
+                                  </div>
+                                  <div>
+                                    {{updated_at}}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="snackbar"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="./js/marked.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/app.js"></script>
+<!-- <script src="../../node_modules/jquery/dist/jquery.min.js"></script> -->
+
+</html>

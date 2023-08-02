@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resizable Split View Examples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        border: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --hue: 223;
+        --bg: hsl(var(--hue), 10%, 90%);
+        --fg: hsl(var(--hue), 10%, 10%);
+        --primary: hsl(var(--hue), 90%, 55%);
+        --disabled: hsl(var(--hue), 10%, 75%);
+        font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+    }
+
+    body,
+    button {
+        font: 1em/1.5 Hind, sans-serif;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--fg);
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    button {
+        background: hsl(var(--hue), 90%, 55%);
+        border-radius: 0.2em;
+        color: #fff;
+        cursor: pointer;
+        margin: auto;
+        padding: 0.5em 1em;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        transition: background 0.15s linear;
+    }
+
+    button:hover {
+        background: hsl(var(--hue), 90%, 45%);
+    }
+
+    .sp {
+        --incTrans: 0.1;
+        /* in seconds */
+        display: block;
+        margin-bottom: 1.5em;
+        overflow: visible;
+        width: 12.75em;
+        height: 1.5em;
+    }
+
+    .sp__bar,
+    .sp__hub {
+        stroke: var(--disabled);
+    }
+
+    .sp__hub--done,
+    .sp__dot--done {
+        transition: r 0.2s cubic-bezier(0, 0, 0.33, 1.67);
+    }
+
+    .sp__hub--done {
+        r: 10px;
+    }
+
+    .sp__hub--done~.sp__bar-fill {
+        transition: all calc(1s * var(--incTrans)) linear;
+    }
+
+    .sp__bar-fill,
+    .sp__hub-fill {
+        stroke: var(--primary);
+    }
+
+    .sp__bar-fill {
+        stroke-dasharray: 40 40;
+        stroke-dashoffset: 40;
+    }
+
+    .sp__hub-fill {
+        stroke-dasharray: 0 62.8 0;
+        visibility: hidden;
+    }
+
+    .sp__hub-fill--done {
+        stroke-dasharray: 31.4 0 31.4;
+        transition: all 0.2s 0.2s ease-out;
+        visibility: visible;
+    }
+
+    .sp__hub-fill.err {
+        stroke: red;
+    }
+
+    .sp__hub-fill.done {
+        stroke: rgb(2, 205, 2);
+    }
+
+    .sp__dot {
+        fill: var(--primary);
+    }
+
+    .sp__dot.err {
+        fill: red;
+    }
+
+    .sp__dot.done {
+        fill: rgb(2, 205, 2);
+    }
+
+    .sp__dot--done {
+        r: 4px;
+        transition-delay: 0.4s;
+    }
+
+    .status {
+        margin-bottom: 4.5em;
+        text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: hsl(var(--hue), 10%, 10%);
+            --fg: hsl(var(--hue), 10%, 90%);
+            --primary: hsl(var(--hue), 90%, 65%);
+            --disabled: hsl(var(--hue), 10%, 30%);
+        }
+    }
+</style>
+
+<body>
+    <main>
+        <svg class="sp" width="204px" height="24px" viewBox="0 0 204 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Part 1 -->
+            <circle data-dot="1" class="sp__dot" cx="12" cy="12" r="0" fill="#000" />
+            <line class="sp__bar" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000" stroke-width="4" />
+            <circle data-hub="1" class="sp__hub" cx="12" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+            <line data-bar="1" class="sp__bar-fill" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000"
+                stroke-width="4" />
+            <circle data-hub-fill="1" class="sp__hub-fill" cx="12" cy="12" r="10" fill="none" stroke-width="4"
+                transform="rotate(180,12,12)" />
+            <!-- Part 2 -->
+            <circle data-dot="2" class="sp__dot" cx="72" cy="12" r="0" fill="#000" />
+            <line class="sp__bar" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000" stroke-width="4" />
+            <circle data-hub="2" class="sp__hub" cx="72" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+            <line data-bar="2" class="sp__bar-fill" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000"
+                stroke-width="4" />
+            <circle data-hub-fill="2" class="sp__hub-fill" cx="72" cy="12" r="10" fill="none" stroke-width="4"
+                transform="rotate(180,72,12)" />
+            <!-- Part 3 -->
+            <circle data-dot="3" class="sp__dot" cx="132" cy="12" r="0" fill="#000" />
+            <line class="sp__bar" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000" stroke-width="4" />
+            <circle data-hub="3" class="sp__hub" cx="132" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+            <line data-bar="3" class="sp__bar-fill" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000"
+                stroke-width="4" />
+            <circle data-hub-fill="3" class="sp__hub-fill" cx="132" cy="12" r="10" fill="none" stroke-width="4"
+                transform="rotate(180,132,12)" />
+            <!-- Part 4 -->
+            <circle data-dot="4" class="sp__dot done" cx="192" cy="12" r="0" fill="#000" />
+            <circle data-hub="4" class="sp__hub" cx="192" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+            <circle data-hub-fill="4" class="sp__hub-fill done" cx="192" cy="12" r="10" fill="none" stroke-width="4"
+                transform="rotate(180,192,12)" />
+        </svg>
+        <p class="status"></p>
+        <button id="reset" type="button">Reset</button>
+    </main>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const spb = new SegmentedProgress(".sp", ".status", 0, false);
+        setTimeout(() => {
+            spb.part = 1
+            spb.err = false
+        }, 2000)
+        setTimeout(() => {
+            spb.part = 2
+            spb.err = true
+        }, 2500)
+        // setTimeout(() => {
+        //     spb.part = 3
+        // }, 5000)
+        // setTimeout(() => {
+        //     spb.part = 4
+        // }, 10000)
+    });
+
+    class SegmentedProgress {
+        constructor(svgQS, statusQS, part, err) {
+            this.svgEl = document.querySelector(svgQS);
+            this.statusEl = document.querySelector(statusQS);
+            this.pct = 0;
+            this.part = part;
+            this.parts = 5;
+            this.timeout = null;
+            this.err = err;
+
+            this.init();
+        }
+        init() {
+            this.updateStatus("Waiting…");
+            this.timeout = setTimeout(this.nextPart.bind(this), 750);
+        }
+        run() {
+            if (this.part < this.parts) {
+                // increment
+                if (this.pct < 100) {
+                    this.inc(10);
+                    let svgCS = window.getComputedStyle(this.svgEl),
+                        incTrans = (svgCS.getPropertyValue("--incTrans") * 1e3) || 0;
+                    this.timeout = setTimeout(this.run.bind(this), incTrans);
+
+                } else {
+                    this.nextPart();
+                }
+            }
+        }
+        inc(amt) {
+            this.pct += amt;
+
+            if (this.pct >= 100)
+                this.pct = 100;
+
+            this.fillBar(this.part, this.pct);
+        }
+        fillBar(part, pct) {
+            let one = 0;
+            if (this.svgEl && one === 0) {
+                let bar = this.svgEl.querySelector(`[data-bar='${part - 1}']`);
+                one++;
+                if (bar) {
+                    let offset = 40 * (1 - this.pct / 100);
+                    bar.style.strokeDashoffset = offset;
+                }
+            }
+        }
+        fillCircle(part, unfill = false, err = this.err) {
+            let dot = this.svgEl.querySelector(`[data-dot='${part}']`),
+                hub = this.svgEl.querySelector(`[data-hub='${part}']`),
+                hubFill = this.svgEl.querySelector(`[data-hub-fill='${part}']`);
+
+            if (unfill === true) {
+                if (dot)
+                    dot.classList.remove("sp__dot--done");
+                dot.classList.add("err");
+                if (hub)
+                    hub.classList.remove("sp__hub--done");
+                hub.classList.add("err");
+                if (hubFill)
+                    hubFill.classList.remove("sp__hub-fill--done");
+                hubFill.classList.add("err");
+            } else {
+                if (dot && err === true) {
+                    dot.classList.add("sp__dot--done");
+                    dot.classList.add("err");
+                }
+                if (dot && err !== true) {
+                    dot.classList.add("sp__dot--done");
+                }
+                if (hub && err === true) {
+                    hub.classList.add("sp__hub--done");
+                    hub.classList.add("err");
+                }
+                if (hub && err !== true) {
+                    hub.classList.add("sp__hub--done");
+                }
+                if (hubFill && err === true) {
+                    hubFill.classList.add("sp__hub-fill--done");
+                    hubFill.classList.add("err");
+                }
+                if (hubFill && err !== true) {
+                    hubFill.classList.add("sp__hub-fill--done");
+                }
+
+            }
+        }
+        nextPart() {
+            this.pct = 0;
+            // next part’s circle
+            // ++this.part;
+            this.fillCircle(this.part);
+            // display the message
+            let msg = "";
+            if (this.part == this.parts - 1)
+                msg = "Complete!";
+            else if (this.err === true)
+                msg = `Error ${this.part}/${this.parts - 1}…`;
+            else
+                msg = `\u0044ownloading ${this.part}/${this.parts - 1}…`;
+
+            this.updateStatus(msg);
+            // delay for next bar
+            let hubTotalTrans = 600;
+            this.timeout = setTimeout(this.run.bind(this), hubTotalTrans);
+        }
+        updateStatus(msg) {
+            if (this.statusEl)
+                this.statusEl.textContent = msg;
+        }
+    }
+</script>
+
+</html>
